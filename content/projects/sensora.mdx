@@ -1,0 +1,40 @@
+---
+title: "Sensora — Biometric Focus Tracking Dashboard"
+slug: sensora
+description: "Full-stack real-time focus tracking dashboard integrating OpenAI CLIP facial analysis with live WebSocket streaming."
+date: "2026-03-01"
+featured: true
+tags: ["React", "Flask", "Python", "OpenAI CLIP", "WebSockets"]
+links:
+  github: "https://github.com/PatrickEnerio"
+image: "/images/projects/sensora.svg"
+---
+
+## Overview
+
+Sensora is a full-stack real-time focus tracking dashboard that integrates a camera-based facial analysis pipeline (OpenAI CLIP) with a React frontend, visualizing biometric engagement scores across live and historical sessions.
+
+## Problem
+
+Understanding focus and engagement during study or work sessions is difficult without objective, real-time feedback. Existing tools rarely combine live biometric signals with an intuitive dashboard for both live monitoring and session history.
+
+## Solution
+
+I built a pipeline from camera input through CLIP-based analysis to a microcontroller layer, with a React frontend consuming live focus scores over WebSockets and historical data via REST. A custom SVG line chart normalizes raw sensor data (unix timestamps, 0–1 scores) into display-ready formats.
+
+<Callout type="info">
+Recognized with Best Beginner Project at HackAI among all first-time hackathon teams.
+</Callout>
+
+## Results
+
+- Engineered WebSocket integration for live focus score streaming alongside a REST API for historical sessions
+- Designed responsive UI with processing pipeline visualization (Camera → CLIP → Microcontroller), interactive tooltips, and animated charts
+- Delivered a complete full-stack prototype within a hackathon timeline
+
+## Tech Stack
+
+- **Frontend:** React, custom SVG charts, responsive UI
+- **Backend:** Flask, Python, REST API, WebSockets
+- **AI/ML:** OpenAI CLIP for facial analysis
+- **Hardware:** Microcontroller integration for sensor data

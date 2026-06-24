@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" fill="none">
+  <rect width="1200" height="750" fill="#EFF6FF"/>
+  <circle cx="600" cy="290" r="120" fill="#BFDBFE"/>
+  <path d="M420 520C500 430 700 430 780 520" stroke="#2563EB" stroke-width="16" stroke-linecap="round"/>
+  <rect x="180" y="560" width="840" height="90" rx="20" fill="white" stroke="#93C5FD" stroke-width="4"/>
+  <text x="600" y="680" text-anchor="middle" fill="#1D4ED8" font-family="Arial, sans-serif" font-size="42" font-weight="700">WeatherLens</text>
+</svg>
