@@ -21,7 +21,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
       <div className="mt-8">
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 text-sm font-medium text-emerald-700 hover:text-emerald-800 dark:text-emerald-300 dark:hover:text-emerald-200"
+          className="inline-flex items-center gap-2 text-sm font-medium text-sky-600 hover:text-sky-700 dark:text-sky-300 dark:hover:text-sky-200"
         >
           View all projects
           <ArrowRight className="h-4 w-4" />

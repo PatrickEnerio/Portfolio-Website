@@ -22,7 +22,7 @@ export function Achievements() {
                 {item.date}
               </span>
             </div>
-            <p className="mt-1 text-sm font-medium text-emerald-700 dark:text-emerald-300">
+            <p className="mt-1 text-sm font-medium text-sky-600 dark:text-sky-300">
               {item.organization}
             </p>
             <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">

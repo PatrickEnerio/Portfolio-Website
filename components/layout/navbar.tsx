@@ -56,7 +56,7 @@ export function Navbar() {
               className={cn(
                 "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                 activeSection === href
-                  ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300"
+                  ? "bg-sky-50 text-sky-600 dark:bg-sky-950/50 dark:text-sky-300"
                   : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100",
               )}
             >

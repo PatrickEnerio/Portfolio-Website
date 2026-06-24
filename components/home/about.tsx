@@ -19,7 +19,7 @@ export function About() {
       <div className="grid gap-8 md:grid-cols-[220px_1fr] md:items-start">
         <div
           aria-hidden="true"
-          className="mx-auto flex h-52 w-52 items-center justify-center rounded-2xl border border-zinc-200 bg-gradient-to-br from-emerald-100 to-zinc-200 text-4xl font-semibold text-emerald-800 dark:border-zinc-800 dark:from-emerald-950 dark:to-zinc-800 dark:text-emerald-200 md:mx-0"
+          className="mx-auto flex h-52 w-52 items-center justify-center rounded-2xl border border-zinc-200 bg-gradient-to-br from-sky-100 to-zinc-200 text-4xl font-semibold text-sky-600 dark:border-zinc-800 dark:from-sky-950 dark:to-zinc-800 dark:text-sky-200 md:mx-0"
         >
           {initials}
         </div>

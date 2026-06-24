@@ -5,10 +5,10 @@ import { AnimatedSection } from "@/components/ui/animated-section";
 
 export function Hero() {
   return (
-    <section className="border-b border-zinc-200 bg-gradient-to-b from-emerald-50/60 to-white dark:border-zinc-800 dark:from-emerald-950/20 dark:to-zinc-950">
+    <section className="border-b border-zinc-200 bg-gradient-to-b from-sky-50/60 to-white dark:border-zinc-800 dark:from-sky-950/20 dark:to-zinc-950">
       <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
         <AnimatedSection>
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-300">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-sky-600 dark:text-sky-300">
             {siteConfig.role}
           </p>
           <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-zinc-900 md:text-6xl dark:text-zinc-50">
@@ -21,7 +21,7 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={siteConfig.links.resume}
-              className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
+              className="inline-flex items-center gap-2 rounded-xl bg-sky-500 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-sky-600"
             >
               <FileDown className="h-4 w-4" />
               Download Resume

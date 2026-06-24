@@ -25,7 +25,7 @@ export function Footer() {
           <a
             href={`mailto:${siteConfig.email}`}
             aria-label="Email"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200 text-zinc-600 transition-colors hover:border-emerald-300 hover:text-emerald-700 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-emerald-800 dark:hover:text-emerald-300"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200 text-zinc-600 transition-colors hover:border-sky-300 hover:text-sky-600 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-sky-700 dark:hover:text-sky-300"
           >
             <Mail className="h-4 w-4" />
           </a>
@@ -34,7 +34,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200 text-zinc-600 transition-colors hover:border-emerald-300 hover:text-emerald-700 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-emerald-800 dark:hover:text-emerald-300"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200 text-zinc-600 transition-colors hover:border-sky-300 hover:text-sky-600 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-sky-700 dark:hover:text-sky-300"
           >
             <GitHubIcon className="h-4 w-4" />
           </a>
@@ -43,13 +43,13 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200 text-zinc-600 transition-colors hover:border-emerald-300 hover:text-emerald-700 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-emerald-800 dark:hover:text-emerald-300"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200 text-zinc-600 transition-colors hover:border-sky-300 hover:text-sky-600 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-sky-700 dark:hover:text-sky-300"
           >
             <LinkedInIcon className="h-4 w-4" />
           </a>
           <Link
             href={siteConfig.links.resume}
-            className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
+            className="rounded-lg bg-sky-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-sky-600"
           >
             Resume
           </Link>

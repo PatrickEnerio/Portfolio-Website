@@ -14,11 +14,11 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <article
       className={cn(
-        "group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-100/50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-emerald-800 dark:hover:shadow-emerald-950/20",
+        "group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-lg hover:shadow-sky-100/50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-sky-700 dark:hover:shadow-sky-950/20",
         className,
       )}
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-emerald-50 to-zinc-100 dark:from-emerald-950/30 dark:to-zinc-900">
+      <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-sky-50 to-zinc-100 dark:from-sky-950/30 dark:to-zinc-900">
         {project.image ? (
           <Image
             src={project.image}
@@ -46,7 +46,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         </div>
 
         <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-          <Link href={project.permalink} className="hover:text-emerald-700 dark:hover:text-emerald-300">
+          <Link href={project.permalink} className="hover:text-sky-600 dark:hover:text-sky-300">
             {project.title}
           </Link>
         </h3>
@@ -58,7 +58,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         <div className="mt-5 flex items-center gap-3">
           <Link
             href={project.permalink}
-            className="inline-flex items-center gap-1 text-sm font-medium text-emerald-700 dark:text-emerald-300"
+            className="inline-flex items-center gap-1 text-sm font-medium text-sky-600 dark:text-sky-300"
           >
             Case study
             <ArrowUpRight className="h-4 w-4" />

@@ -37,7 +37,7 @@ export function MDXContent({ code, components }: MDXContentProps) {
   );
 
   return (
-    <div className="prose prose-zinc max-w-none dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-emerald-600 prose-code:text-emerald-700 dark:prose-a:text-emerald-400 dark:prose-code:text-emerald-300">
+    <div className="prose prose-zinc max-w-none dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-sky-500 prose-code:text-sky-600 dark:prose-a:text-sky-400 dark:prose-code:text-sky-300">
       {/* eslint-disable-next-line react-hooks/static-components -- Velite compiles MDX to a cached component factory */}
       <Component components={mergedComponents} />
     </div>

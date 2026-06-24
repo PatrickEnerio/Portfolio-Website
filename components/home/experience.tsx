@@ -19,7 +19,7 @@ export function Experience() {
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
                   {item.title}
                 </h3>
-                <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
+                <p className="text-sm font-medium text-sky-600 dark:text-sky-300">
                   {item.organization}
                 </p>
               </div>
@@ -31,7 +31,7 @@ export function Experience() {
             <ul className="mt-4 space-y-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
               {item.highlights.map((highlight) => (
                 <li key={highlight} className="flex gap-2">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-400" />
                   <span>{highlight}</span>
                 </li>
               ))}

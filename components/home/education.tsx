@@ -19,7 +19,7 @@ export function Education() {
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
                   {item.degree}
                 </h3>
-                <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
+                <p className="text-sm font-medium text-sky-600 dark:text-sky-300">
                   {item.school}
                 </p>
               </div>

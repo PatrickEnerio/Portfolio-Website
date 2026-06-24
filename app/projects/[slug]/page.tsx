@@ -97,7 +97,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               href={project.links.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
+              className="inline-flex items-center gap-2 rounded-xl bg-sky-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-sky-600"
             >
               <ExternalLink className="h-4 w-4" />
               Live demo

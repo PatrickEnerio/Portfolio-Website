@@ -37,5 +37,5 @@ body {
 }
 
 ::selection {
-  background: color-mix(in oklab, #10b981 30%, transparent);
+  background: color-mix(in oklab, #38bdf8 30%, transparent);
 }
