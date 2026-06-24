@@ -16,6 +16,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
       id="projects"
       title="Featured Projects"
       description="Selected work with links to deeper case studies."
+      contentClassName="max-w-6xl"
     >
       <ProjectGrid projects={featured} />
       <div className="mt-8">

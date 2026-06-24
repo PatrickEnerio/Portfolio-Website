@@ -8,6 +8,7 @@ type SectionProps = {
   description?: string;
   children: ReactNode;
   className?: string;
+  contentClassName?: string;
 };
 
 export function Section({
@@ -16,6 +17,7 @@ export function Section({
   description,
   children,
   className,
+  contentClassName,
 }: SectionProps) {
   return (
     <section
@@ -23,7 +25,7 @@ export function Section({
       className={cn("scroll-mt-24 py-16 md:py-20", className)}
     >
       <AnimatedSection>
-        <div className="mx-auto max-w-5xl px-6">
+        <div className={cn("mx-auto max-w-5xl px-6", contentClassName)}>
           <div className="mb-10 max-w-2xl">
             <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl dark:text-zinc-50">
               {title}
