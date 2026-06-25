@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
+import { NeuralBackground } from "@/components/layout/neural-background";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
@@ -50,12 +51,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background text-foreground antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} relative min-h-screen bg-background text-foreground antialiased`}
       >
         <ThemeProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <NeuralBackground />
+          <div className="relative z-10 flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

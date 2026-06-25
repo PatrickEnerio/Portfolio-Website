@@ -1,4 +1,5 @@
 import { ChevronDown, FileDown, Mail } from "lucide-react";
+import { HeroNavbar } from "@/components/home/hero-navbar";
 import { HeroSocialLinks } from "@/components/home/hero-social-links";
 import { HeroVisual } from "@/components/home/hero-visual";
 import { StaggerReveal } from "@/components/ui/stagger-reveal";
@@ -14,8 +15,12 @@ const ctaFocusRing = cn(
 
 export function Hero() {
   return (
-    <section className="relative scroll-mt-24 border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-[#1c1c1c]">
-      <div className="mx-auto flex min-h-[85svh] max-w-6xl flex-col justify-center px-6 py-16 md:py-20">
+    <section
+      id="hero"
+      className="relative scroll-mt-24 border-b border-zinc-200 dark:border-zinc-800"
+    >
+      <HeroNavbar />
+      <div className="mx-auto flex min-h-[calc(85svh-4rem)] max-w-6xl flex-col justify-center px-6 py-12 md:py-16">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <HeroVisual className="order-1 lg:order-2" />
 

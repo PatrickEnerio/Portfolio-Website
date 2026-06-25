@@ -123,3 +123,31 @@ body {
     animation: none;
   }
 }
+
+.neural-bg-wash {
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      color-mix(in oklab, #38bdf8 3%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 80% 100%,
+      color-mix(in oklab, #a1a1aa 2%, transparent),
+      transparent 65%
+    );
+}
+
+.dark .neural-bg-wash {
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      color-mix(in oklab, #0ea5e9 4%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 80% 100%,
+      color-mix(in oklab, #71717a 3%, transparent),
+      transparent 65%
+    );
+}

@@ -1,22 +1,21 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
-import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { siteConfig } from "@/data/site";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
+import { NavContent } from "@/components/layout/nav-content";
+import { useActiveSection } from "@/components/layout/use-active-section";
 import { cn } from "@/lib/utils";
 
-const sections = siteConfig.nav;
-
-function toHomeSectionHref(hash: string) {
-  return hash.startsWith("#") ? `/${hash}` : hash;
-}
-
 export function Navbar() {
-  const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const activeSection = useActiveSection();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [heroInView, setHeroInView] = useState(isHome);
+
+  const showNavbar = !isHome || !heroInView;
+  const navElevated = (isHome && showNavbar) || (!isHome && scrolled);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 48);
@@ -26,108 +25,52 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    if (!isHome) {
+      setHeroInView(false);
+      return;
+    }
 
-        if (visible[0]?.target.id) {
-          setActiveSection(`#${visible[0].target.id}`);
-        }
+    const hero = document.getElementById("hero");
+    if (!hero) {
+      setHeroInView(false);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setHeroInView(entry.isIntersecting);
       },
-      { rootMargin: "-40% 0px -45% 0px", threshold: [0, 0.25, 0.5, 1] },
+      { threshold: 0 },
     );
 
-    sections.forEach(({ href }) => {
-      const element = document.querySelector(href);
-      if (element) observer.observe(element);
-    });
-
+    observer.observe(hero);
     return () => observer.disconnect();
-  }, []);
+  }, [isHome, pathname]);
+
+  useEffect(() => {
+    if (!showNavbar) {
+      setMobileOpen(false);
+    }
+  }, [showNavbar]);
 
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 transition-colors duration-300",
-        scrolled
+        "z-50 transition-all duration-300 ease-out motion-reduce:transition-none",
+        isHome ? "fixed inset-x-0 top-0" : "sticky top-0",
+        showNavbar
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none -translate-y-full opacity-0",
+        navElevated
           ? "border-b border-zinc-200/80 bg-white/80 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/80"
           : "border-b border-transparent bg-transparent",
       )}
     >
-      <nav
-        aria-label="Main navigation"
-        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
-      >
-        <Link
-          href="/"
-          className="text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-50"
-        >
-          {siteConfig.name}
-        </Link>
-
-        <div className="hidden items-center gap-1 md:flex">
-          {sections.map(({ label, href }) => (
-            <Link
-              key={href}
-              href={toHomeSectionHref(href)}
-              className={cn(
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                activeSection === href
-                  ? "bg-sky-50 text-sky-600 dark:bg-sky-950/50 dark:text-sky-300"
-                  : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100",
-              )}
-            >
-              {label}
-            </Link>
-          ))}
-          <Link
-            href="/projects"
-            className="rounded-md px-3 py-2 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-          >
-            All Projects
-          </Link>
-          <ThemeToggle />
-        </div>
-
-        <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
-          <button
-            type="button"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((open) => !open)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-200 text-zinc-600 dark:border-zinc-800 dark:text-zinc-300"
-          >
-            {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
-        </div>
-      </nav>
-
-      {mobileOpen && (
-        <div className="border-t border-zinc-200 px-6 py-4 md:hidden dark:border-zinc-800">
-          <div className="flex flex-col gap-1">
-            {sections.map(({ label, href }) => (
-              <Link
-                key={href}
-                href={toHomeSectionHref(href)}
-                onClick={() => setMobileOpen(false)}
-                className="rounded-md px-3 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200"
-              >
-                {label}
-              </Link>
-            ))}
-            <Link
-              href="/projects"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-md px-3 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200"
-            >
-              All Projects
-            </Link>
-          </div>
-        </div>
-      )}
+      <NavContent
+        activeSection={activeSection}
+        mobileOpen={mobileOpen}
+        onMobileOpenChange={setMobileOpen}
+      />
     </header>
   );
 }
