@@ -21,7 +21,7 @@ export const siteConfig = {
     { label: "Contact", href: "#contact" },
   ],
   hero: {
-    eyebrow: "Software Engineering Student · RF Platform Intern @ Nokia",
+    eyebrow: "My Portfolio Website!",
     headline: ["John Patrick", "Enerio"],
     subhead:
       "Your Friendly, Neighborhood Engineer!",
