@@ -9,9 +9,21 @@ import { cn } from "@/lib/utils";
 
 const sections = siteConfig.nav;
 
+function toHomeSectionHref(hash: string) {
+  return hash.startsWith("#") ? `/${hash}` : hash;
+}
+
 export function Navbar() {
   const [activeSection, setActiveSection] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 48);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,10 +48,17 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/80 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/80">
+    <header
+      className={cn(
+        "sticky top-0 z-50 transition-colors duration-300",
+        scrolled
+          ? "border-b border-zinc-200/80 bg-white/80 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/80"
+          : "border-b border-transparent bg-transparent",
+      )}
+    >
       <nav
         aria-label="Main navigation"
-        className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4"
+        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
       >
         <Link
           href="/"
@@ -50,9 +69,9 @@ export function Navbar() {
 
         <div className="hidden items-center gap-1 md:flex">
           {sections.map(({ label, href }) => (
-            <a
+            <Link
               key={href}
-              href={href}
+              href={toHomeSectionHref(href)}
               className={cn(
                 "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                 activeSection === href
@@ -61,7 +80,7 @@ export function Navbar() {
               )}
             >
               {label}
-            </a>
+            </Link>
           ))}
           <Link
             href="/projects"
@@ -90,14 +109,14 @@ export function Navbar() {
         <div className="border-t border-zinc-200 px-6 py-4 md:hidden dark:border-zinc-800">
           <div className="flex flex-col gap-1">
             {sections.map(({ label, href }) => (
-              <a
+              <Link
                 key={href}
-                href={href}
+                href={toHomeSectionHref(href)}
                 onClick={() => setMobileOpen(false)}
                 className="rounded-md px-3 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200"
               >
                 {label}
-              </a>
+              </Link>
             ))}
             <Link
               href="/projects"

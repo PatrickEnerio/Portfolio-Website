@@ -1,4 +1,7 @@
-import { skills } from "@/data/skills";
+import { SkillHighlightCard } from "@/components/home/skill-highlight-card";
+import { SkillProficiencyBars } from "@/components/home/skill-proficiency-bars";
+import { StaggerReveal } from "@/components/ui/stagger-reveal";
+import { featuredSkills, skillGroups } from "@/data/skills";
 import { Section } from "@/components/layout/section";
 
 export function Skills() {
@@ -6,30 +9,15 @@ export function Skills() {
     <Section
       id="skills"
       title="Skills"
-      description="Technologies and practices I use when building software."
+      description="Core strengths and proficiency across the tools I use most."
     >
-      <div className="grid gap-6 md:grid-cols-2">
-        {skills.map((group) => (
-          <div
-            key={group.category}
-            className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"
-          >
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-zinc-900 dark:text-zinc-100">
-              {group.category}
-            </h3>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full bg-zinc-100 px-3 py-1.5 text-sm text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
+      <StaggerReveal className="grid gap-3 md:grid-cols-3" staggerMs={80}>
+        {featuredSkills.map((skill) => (
+          <SkillHighlightCard key={skill.slug} skill={skill} />
         ))}
-      </div>
+      </StaggerReveal>
+
+      <SkillProficiencyBars groups={skillGroups} className="mt-12" />
     </Section>
   );
 }
