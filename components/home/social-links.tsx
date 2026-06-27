@@ -15,10 +15,14 @@ const socialIcons = {
   linkedin: LinkedInIcon,
 } as const;
 
-export function HeroSocialLinks() {
+type SocialLinksProps = {
+  className?: string;
+};
+
+export function SocialLinks({ className }: SocialLinksProps) {
   return (
-    <div className="mt-4 flex items-center gap-2">
-      {siteConfig.hero.social.map(({ platform, href, ariaLabel }) => {
+    <div className={cn("mt-4 flex items-center gap-2", className)}>
+      {siteConfig.contact.social.map(({ platform, href, ariaLabel }) => {
         const Icon = socialIcons[platform];
 
         return (

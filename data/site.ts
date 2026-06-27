@@ -20,6 +20,22 @@ export const siteConfig = {
     { label: "Experience", href: "#experience" },
     { label: "Contact", href: "#contact" },
   ],
+  contact: {
+    title: "Let's work together",
+    description: "Open to software engineering internships and collaborative projects.",
+    social: [
+      {
+        platform: "github",
+        href: links.github,
+        ariaLabel: "GitHub profile",
+      },
+      {
+        platform: "linkedin",
+        href: links.linkedin,
+        ariaLabel: "LinkedIn profile",
+      },
+    ],
+  },
   hero: {
     eyebrow: "My Portfolio Website!",
     headline: ["John Patrick", "Enerio"],
@@ -33,22 +49,7 @@ export const siteConfig = {
       src: "/images/hero/profile.png",
       alt: "John Patrick Enerio",
     },
-    ctas: {
-      primary: { label: "Resume", href: links.resume },
-      secondary: { label: "Get in Touch", href: "#contact" },
-    },
-    social: [
-      {
-        platform: "github",
-        href: links.github,
-        ariaLabel: "GitHub profile",
-      },
-      {
-        platform: "linkedin",
-        href: links.linkedin,
-        ariaLabel: "LinkedIn profile",
-      },
-    ],
+    cta: { label: "Get in Touch", href: "#contact" },
     scrollTarget: "#about",
   },
 } as const;

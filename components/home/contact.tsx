@@ -1,56 +1,47 @@
-import { Mail, Phone } from "lucide-react";
-import { GitHubIcon, LinkedInIcon } from "@/components/icons/social";
-import { siteConfig } from "@/data/site";
+import { FileDown, Mail } from "lucide-react";
+import { SocialLinks } from "@/components/home/social-links";
 import { Section } from "@/components/layout/section";
+import { siteConfig } from "@/data/site";
+import { ctaPrimaryClassName, ctaSecondaryClassName } from "@/lib/cta-styles";
 
 export function Contact() {
+  const phoneHref = `tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`;
+
   return (
     <Section
       id="contact"
-      title="Contact"
-      description="Interested in working together? I'd love to hear from you."
+      title={siteConfig.contact.title}
+      description={siteConfig.contact.description}
+      className="border-t border-zinc-200 bg-zinc-50/80 dark:border-zinc-800 dark:bg-zinc-950/80"
     >
-      <div className="rounded-2xl border border-zinc-200 bg-white p-8 dark:border-zinc-800 dark:bg-zinc-900">
-        <p className="max-w-2xl text-base leading-7 text-zinc-600 dark:text-zinc-400">
-          I&apos;m open to software engineering internship opportunities and collaborative
-          project work. Reach out if you&apos;d like to chat about my experience, your team,
-          or potential roles.
-        </p>
+      <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+        <div>
+          <div className="flex flex-wrap gap-3">
+            <a href={`mailto:${siteConfig.email}`} className={ctaPrimaryClassName}>
+              <Mail className="h-4 w-4" />
+              {siteConfig.email}
+            </a>
+            <a href={siteConfig.links.resume} className={ctaSecondaryClassName}>
+              <FileDown className="h-4 w-4" />
+              Resume
+            </a>
+          </div>
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href={`tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`}
-            className="inline-flex items-center gap-2 rounded-xl border border-zinc-300 px-5 py-3 text-sm font-medium text-zinc-800 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800"
-          >
-            <Phone className="h-4 w-4" />
-            {siteConfig.phone}
-          </a>
-          <a
-            href={`mailto:${siteConfig.email}`}
-            className="inline-flex items-center gap-2 rounded-xl bg-sky-500 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-sky-600"
-          >
-            <Mail className="h-4 w-4" />
-            {siteConfig.email}
-          </a>
-          <a
-            href={siteConfig.links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-zinc-300 px-5 py-3 text-sm font-medium text-zinc-800 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800"
-          >
-            <GitHubIcon className="h-4 w-4" />
-            GitHub
-          </a>
-          <a
-            href={siteConfig.links.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-zinc-300 px-5 py-3 text-sm font-medium text-zinc-800 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800"
-          >
-            <LinkedInIcon className="h-4 w-4" />
-            LinkedIn
-          </a>
+          <SocialLinks className="mt-6" />
+
+          <p className="mt-6 text-sm text-zinc-500 dark:text-zinc-500">
+            {siteConfig.location}
+            <span aria-hidden="true"> · </span>
+            <a
+              href={phoneHref}
+              className="transition-colors hover:text-zinc-700 dark:hover:text-zinc-300"
+            >
+              {siteConfig.phone}
+            </a>
+          </p>
         </div>
+
+        <div aria-hidden="true" className="hidden lg:block" />
       </div>
     </Section>
   );

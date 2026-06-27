@@ -1,17 +1,12 @@
-import { ChevronDown, FileDown, Mail } from "lucide-react";
+import { ChevronDown, Mail } from "lucide-react";
 import { HeroNavbar } from "@/components/home/hero-navbar";
-import { HeroSocialLinks } from "@/components/home/hero-social-links";
 import { HeroVisual } from "@/components/home/hero-visual";
 import { StaggerReveal } from "@/components/ui/stagger-reveal";
 import { siteConfig } from "@/data/site";
+import { ctaPrimaryClassName } from "@/lib/cta-styles";
 import { cn } from "@/lib/utils";
 
 const { hero } = siteConfig;
-
-const ctaFocusRing = cn(
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2",
-  "dark:focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-[#1c1c1c]",
-);
 
 export function Hero() {
   return (
@@ -44,29 +39,11 @@ export function Hero() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href={hero.ctas.primary.href}
-                  className={cn(
-                    "inline-flex items-center gap-2 rounded-[20px] bg-black px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-800",
-                    ctaFocusRing,
-                  )}
-                >
-                  <FileDown className="h-4 w-4" />
-                  {hero.ctas.primary.label}
-                </a>
-                <a
-                  href={hero.ctas.secondary.href}
-                  className={cn(
-                    "inline-flex items-center gap-2 rounded-[20px] border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-800 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800/60",
-                    ctaFocusRing,
-                  )}
-                >
+                <a href={hero.cta.href} className={ctaPrimaryClassName}>
                   <Mail className="h-4 w-4" />
-                  {hero.ctas.secondary.label}
+                  {hero.cta.label}
                 </a>
               </div>
-
-              <HeroSocialLinks />
 
               <p className="mt-8 text-sm text-zinc-500 dark:text-zinc-500">
                 {hero.meta.location} · {hero.meta.availability}
