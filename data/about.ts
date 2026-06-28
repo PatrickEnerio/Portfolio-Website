@@ -1,9 +1,25 @@
 export const about = {
-  bio: [
-    "I'm a software engineering student at the University of Texas at Dallas, expected to graduate in May 2027. I enjoy building products end to end—from UI and API design through deployment—and I'm especially drawn to work that blends real-time systems, automation, and thoughtful user experience.",
-    "I'm currently an RF Platform Intern at Nokia, where I develop automated test scripts and documentation pipelines for a legacy codebase. Previously, I led frontend development for an AI-powered voice cooking assistant at ACM and served as Engineering Project Lead for a UTDesign EPICS vacuum former project recognized with an Excellence in Design award.",
-    "Outside of internships and coursework, I build hackathon and side projects like Sensora, a biometric focus-tracking dashboard that won Best Beginner Project at HackAI. I'm open to software engineering internships and collaborative teams where I can contribute quickly and keep learning.",
+  chips: [
+    { label: "May 2027" },
+    { label: "Nokia · RF Platform Intern" },
+    { label: "Open to internships" },
   ],
-  image: "/images/profile.jpg",
-  imageAlt: "John Patrick Enerio",
+  highlights: [
+    {
+      id: "who-i-am",
+      title: "Who I am",
+      body: "Software engineering student at UT Dallas (May 2027). I like full-stack work that blends real-time systems, automation, and thoughtful UX.",
+    },
+    {
+      id: "what-i-do-now",
+      title: "What I do now",
+      body: "RF Platform Intern at Nokia building test automation and docs pipelines. Previously led frontend for an ACM voice cooking assistant and a UTDesign EPICS project.",
+    },
+    {
+      id: "what-im-looking-for",
+      title: "What I'm looking for",
+      body: "Software engineering internships and teams where I can ship quickly—like Sensora, my HackAI-winning focus-tracking dashboard.",
+    },
+  ],
+  experienceLink: { label: "See my experience", href: "#experience" },
 } as const;
