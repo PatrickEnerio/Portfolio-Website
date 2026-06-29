@@ -1,3 +1,4 @@
+import { SurfaceCard } from "@/components/ui/surface-card";
 import { cn } from "@/lib/utils";
 
 type AboutHighlight = {
@@ -18,11 +19,9 @@ export function AboutHighlightCard({
   className,
 }: AboutHighlightCardProps) {
   return (
-    <article
-      className={cn(
-        "flex flex-col gap-3.5 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900",
-        className,
-      )}
+    <SurfaceCard
+      as="article"
+      className={cn("flex flex-col gap-3.5 p-5", className)}
     >
       <div
         className={cn(
@@ -42,6 +41,6 @@ export function AboutHighlightCard({
           {highlight.body}
         </p>
       </div>
-    </article>
+    </SurfaceCard>
   );
 }

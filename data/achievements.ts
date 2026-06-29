@@ -1,4 +1,4 @@
-// Order matters: first entry = 1st place (center), second = 2nd (left), third = 3rd (right).
+// Ordered from biggest accomplishment to smallest.
 export type Achievement = {
   title: string;
   organization: string;

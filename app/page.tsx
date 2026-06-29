@@ -1,11 +1,8 @@
-import { About } from "@/components/home/about";
-import { Achievements } from "@/components/home/achievements";
+import { BentoCredentials } from "@/components/home/bento-credentials";
+import { BentoIdentity } from "@/components/home/bento-identity";
 import { Contact } from "@/components/home/contact";
-import { Education } from "@/components/home/education";
-import { Experience } from "@/components/home/experience";
 import { FeaturedProjects } from "@/components/home/featured-projects";
 import { Hero } from "@/components/home/hero";
-import { Skills } from "@/components/home/skills";
 import { getProjects } from "@/lib/projects";
 
 export default function HomePage() {
@@ -14,12 +11,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <About />
-      <Education />
+      <BentoIdentity />
       <FeaturedProjects projects={projects} />
-      <Skills />
-      <Experience />
-      <Achievements />
+      <BentoCredentials />
       <Contact />
     </>
   );

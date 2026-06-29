@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 type SkillProficiencyBarsProps = {
   groups: SkillGroup[];
   className?: string;
+  limitPerGroup?: number;
 };
 
 function ProficiencyRow({ skill }: { skill: SkillItem }) {
@@ -44,21 +45,31 @@ function ProficiencyRow({ skill }: { skill: SkillItem }) {
   );
 }
 
-export function SkillProficiencyBars({ groups, className }: SkillProficiencyBarsProps) {
+export function SkillProficiencyBars({
+  groups,
+  className,
+  limitPerGroup,
+}: SkillProficiencyBarsProps) {
   return (
     <div className={cn("space-y-6 sm:space-y-7", className)}>
-      {groups.map((group) => (
-        <div key={group.category}>
-          <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-900 dark:text-zinc-100">
-            {group.category}
-          </h3>
-          <div className="mt-3 space-y-3">
-            {group.items.map((skill) => (
-              <ProficiencyRow key={skill.name} skill={skill} />
-            ))}
+      {groups.map((group) => {
+        const items = limitPerGroup
+          ? group.items.slice(0, limitPerGroup)
+          : group.items;
+
+        return (
+          <div key={group.category}>
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-900 dark:text-zinc-100">
+              {group.category}
+            </h3>
+            <div className="mt-3 space-y-3">
+              {items.map((skill) => (
+                <ProficiencyRow key={skill.name} skill={skill} />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

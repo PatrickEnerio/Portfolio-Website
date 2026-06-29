@@ -5,7 +5,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-zinc-200 bg-zinc-50/80 backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-950/80">
-      <div className="mx-auto max-w-5xl px-6 py-10">
+      <div className="mx-auto max-w-6xl px-6 py-10">
         <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
           {siteConfig.name}
         </p>

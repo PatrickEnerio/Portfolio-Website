@@ -10,6 +10,7 @@ export function Contact() {
   return (
     <Section
       id="contact"
+      eyebrow="04 · Contact"
       title={siteConfig.contact.title}
       description={siteConfig.contact.description}
       className="border-t border-zinc-200 bg-zinc-50/80 dark:border-zinc-800 dark:bg-zinc-950/80"

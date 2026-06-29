@@ -1,4 +1,5 @@
 import { SkillIcon } from "@/components/icons/skill-icon";
+import { SurfaceCard } from "@/components/ui/surface-card";
 import type { FeaturedSkill } from "@/data/skills";
 import { cn } from "@/lib/utils";
 
@@ -9,11 +10,9 @@ type SkillHighlightCardProps = {
 
 export function SkillHighlightCard({ skill, className }: SkillHighlightCardProps) {
   return (
-    <article
-      className={cn(
-        "flex flex-col gap-3.5 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900",
-        className,
-      )}
+    <SurfaceCard
+      as="article"
+      className={cn("flex flex-col gap-3.5 p-5", className)}
     >
       <div
         className={cn(
@@ -32,6 +31,6 @@ export function SkillHighlightCard({ skill, className }: SkillHighlightCardProps
           {skill.description}
         </p>
       </div>
-    </article>
+    </SurfaceCard>
   );
 }
