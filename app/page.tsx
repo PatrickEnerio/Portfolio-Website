@@ -15,11 +15,11 @@ export default function HomePage() {
     <>
       <Hero />
       <About />
+      <Education />
       <FeaturedProjects projects={projects} />
       <Skills />
       <Experience />
       <Achievements />
-      <Education />
       <Contact />
     </>
   );
