@@ -1,39 +1,32 @@
 import { AboutHighlightCard } from "@/components/home/about-highlight-card";
+import { AboutIntroCard } from "@/components/home/about-intro-card";
+import { EducationCard } from "@/components/home/education-card";
 import { Section } from "@/components/layout/section";
 import { StaggerReveal } from "@/components/ui/stagger-reveal";
 import { about } from "@/data/about";
-import { siteConfig } from "@/data/site";
+import { education } from "@/data/education";
 import { cn } from "@/lib/utils";
 
 export function About() {
-  const chips = [{ label: siteConfig.location }, ...about.chips];
-
   return (
     <Section
       id="about"
       title="About"
       description="A quick introduction to who I am and what I'm looking for."
     >
-      <div className="mb-6 flex flex-wrap gap-2">
-        {chips.map((chip) => (
-          <span
-            key={chip.label}
-            className={cn(
-              "rounded-full border border-zinc-200 px-3 py-1 text-xs font-medium text-zinc-500",
-              "dark:border-zinc-800 dark:text-zinc-400",
-            )}
-          >
-            {chip.label}
-          </span>
-        ))}
-      </div>
+      {education[0] ? (
+        <div className="mb-6">
+          <EducationCard item={education[0]} />
+        </div>
+      ) : null}
 
       <StaggerReveal className="grid gap-3 md:grid-cols-3" staggerMs={80}>
+        <AboutIntroCard intro={about.intro} />
         {about.highlights.map((highlight, index) => (
           <AboutHighlightCard
             key={highlight.id}
             highlight={highlight}
-            index={index}
+            index={index + 1}
           />
         ))}
       </StaggerReveal>

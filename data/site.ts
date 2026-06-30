@@ -12,7 +12,7 @@ export const siteConfig = {
   url: "https://portfolio-website-patrickenerio.vercel.app",
   email: "penerio2004@gmail.com",
   phone: "(214) 326-7178",
-  location: "Richardson, TX",
+  location: "McKinney, TX",
   links,
   nav: [
     { label: "About", href: "#about" },
@@ -40,9 +40,9 @@ export const siteConfig = {
     eyebrow: "Software Engineering · UT Dallas · May 2027",
     headline: ["John Patrick", "Enerio"],
     subhead:
-      "Building full-stack applications, test automation at Nokia, and award-winning projects.",
+      "Bulding Software. From testing automation to full-stack applications.",
     meta: {
-      location: "McKinney, TX",
+      location: "",
       availability: "",
     },
     image: {

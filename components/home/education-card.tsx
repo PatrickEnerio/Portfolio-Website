@@ -24,10 +24,15 @@ export function EducationCard({ item, className }: EducationCardProps) {
           {item.gpa ? <p className="mt-1">GPA: {item.gpa}</p> : null}
         </div>
       </div>
-      {item.details ? (
-        <p className="mt-4 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-          {item.details}
-        </p>
+      {item.relevantCoursework && item.relevantCoursework.length > 0 ? (
+        <dl className="mt-4 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 border-t border-zinc-200 pt-4 dark:border-zinc-800">
+          <dt className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+            Relevant coursework
+          </dt>
+          <dd className="text-sm text-zinc-600 dark:text-zinc-400">
+            {item.relevantCoursework.join(" · ")}
+          </dd>
+        </dl>
       ) : null}
     </SurfaceCard>
   );
