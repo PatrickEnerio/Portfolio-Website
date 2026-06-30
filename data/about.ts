@@ -1,8 +1,7 @@
 export const about = {
   chips: [
-    { label: "May 2027" },
     { label: "Nokia · RF Platform Intern" },
-    { label: "Open to internships" },
+    { label: "Looking for work" },
   ],
   highlights: [
     {

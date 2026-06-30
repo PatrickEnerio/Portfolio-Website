@@ -1,17 +1,21 @@
-import { ChevronDown, Mail } from "lucide-react";
+import { ChevronDown, FileDown, FolderOpen } from "lucide-react";
 import { HeroNavbar } from "@/components/home/hero-navbar";
 import { HeroVisual } from "@/components/home/hero-visual";
 import { StaggerReveal } from "@/components/ui/stagger-reveal";
+import { about } from "@/data/about";
 import { siteConfig } from "@/data/site";
-import { ctaPrimaryClassName } from "@/lib/cta-styles";
+import { ctaPrimaryClassName, ctaSecondaryClassName } from "@/lib/cta-styles";
 import { cn } from "@/lib/utils";
 
 const { hero } = siteConfig;
 
 export function Hero() {
+  const metaParts = [hero.meta.location, hero.meta.availability].filter(Boolean);
+
   return (
     <section
       id="hero"
+      aria-labelledby="hero-heading"
       className="relative scroll-mt-24 border-b border-zinc-200 dark:border-zinc-800"
     >
       <HeroNavbar />
@@ -25,7 +29,10 @@ export function Hero() {
                 {hero.eyebrow}
               </p>
 
-              <h1 className="mt-4 text-5xl font-bold tracking-tight text-zinc-900 md:text-6xl lg:text-7xl dark:text-zinc-50">
+              <h1
+                id="hero-heading"
+                className="mt-4 text-5xl font-bold tracking-tight text-zinc-900 md:text-6xl lg:text-7xl dark:text-zinc-50"
+              >
                 {hero.headline.map((line, index) => (
                   <span key={line}>
                     {index > 0 ? <br /> : null}
@@ -38,16 +45,36 @@ export function Hero() {
                 {hero.subhead}
               </p>
 
+              <div className="mt-6 flex flex-wrap gap-2">
+                {about.chips.map((chip) => (
+                  <span
+                    key={chip.label}
+                    className={cn(
+                      "rounded-full border border-zinc-200 px-3 py-1 text-xs font-medium text-zinc-500",
+                      "dark:border-zinc-800 dark:text-zinc-400",
+                    )}
+                  >
+                    {chip.label}
+                  </span>
+                ))}
+              </div>
+
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href={hero.cta.href} className={ctaPrimaryClassName}>
-                  <Mail className="h-4 w-4" />
-                  {hero.cta.label}
+                <a href={hero.ctas.primary.href} className={ctaPrimaryClassName}>
+                  <FolderOpen className="h-4 w-4" />
+                  {hero.ctas.primary.label}
+                </a>
+                <a href={hero.ctas.secondary.href} className={ctaSecondaryClassName}>
+                  <FileDown className="h-4 w-4" />
+                  {hero.ctas.secondary.label}
                 </a>
               </div>
 
-              <p className="mt-8 text-sm text-zinc-500 dark:text-zinc-500">
-                {hero.meta.location} · {hero.meta.availability}
-              </p>
+              {metaParts.length > 0 ? (
+                <p className="mt-8 text-sm text-zinc-500 dark:text-zinc-500">
+                  {metaParts.join(" · ")}
+                </p>
+              ) : null}
             </StaggerReveal>
           </div>
         </div>

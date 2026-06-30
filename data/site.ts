@@ -37,19 +37,22 @@ export const siteConfig = {
     ],
   },
   hero: {
-    eyebrow: "My Portfolio Website!",
+    eyebrow: "Software Engineering · UT Dallas · May 2027",
     headline: ["John Patrick", "Enerio"],
     subhead:
-      "Your Friendly, Neighborhood Engineer!",
+      "Building full-stack applications, test automation at Nokia, and award-winning projects.",
     meta: {
-      location: "",
+      location: "McKinney, TX",
       availability: "",
     },
     image: {
       src: "/images/hero/profile.png",
       alt: "John Patrick Enerio",
     },
-    cta: { label: "Get in Touch", href: "#contact" },
+    ctas: {
+      primary: { label: "View Projects", href: "#projects" },
+      secondary: { label: "Download Resume", href: links.resume },
+    },
     scrollTarget: "#about",
   },
 } as const;
