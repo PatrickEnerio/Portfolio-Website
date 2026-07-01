@@ -26,7 +26,7 @@ function randomSpeed() {
 }
 
 function getNodeCount(width: number) {
-  return width < 768 ? 12 : 24;
+  return width < 768 ? 20 : 40;
 }
 
 function getThemeColors(isDark: boolean) {

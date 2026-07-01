@@ -9,16 +9,71 @@ type ExperienceTimelineProps = {
   items: Experience[];
 };
 
-function parseTimelineDates(period: string): { start: string; end: string | null } {
-  const parts = period.split("–").map((part) => part.trim());
-  const start = parts[0]?.replace(/\./g, "") ?? period;
-  const endRaw = parts[1];
+const MONTH_ABBREVS: Record<string, string> = {
+  january: "Jan",
+  jan: "Jan",
+  february: "Feb",
+  feb: "Feb",
+  march: "Mar",
+  mar: "Mar",
+  april: "Apr",
+  apr: "Apr",
+  may: "May",
+  june: "Jun",
+  jun: "Jun",
+  july: "Jul",
+  jul: "Jul",
+  august: "Aug",
+  aug: "Aug",
+  september: "Sep",
+  sep: "Sep",
+  october: "Oct",
+  oct: "Oct",
+  november: "Nov",
+  nov: "Nov",
+  december: "Dec",
+  dec: "Dec",
+};
 
-  if (!endRaw || endRaw.toLowerCase() === "present") {
-    return { start, end: null };
+function parseDatePart(part: string): { month: string; year: string } | null {
+  const cleaned = part.replace(/\./g, "").trim();
+  const match = cleaned.match(/^([A-Za-z]+)\s+((19|20)\d{2})$/);
+
+  if (!match) {
+    return null;
   }
 
-  return { start, end: endRaw.replace(/\./g, "") };
+  const month = MONTH_ABBREVS[match[1].toLowerCase()];
+  if (!month) {
+    return null;
+  }
+
+  return { month, year: match[2] };
+}
+
+function parseTimelineDates(period: string): string {
+  const parts = period.split(/[–-]/).map((part) => part.trim());
+  const start = parts[0] ? parseDatePart(parts[0]) : null;
+  const endRaw = parts[1];
+
+  if (!start) {
+    return period;
+  }
+
+  if (!endRaw || endRaw.toLowerCase() === "present") {
+    return `${start.month} ${start.year} – Present`;
+  }
+
+  const end = parseDatePart(endRaw);
+  if (!end) {
+    return `${start.month} ${start.year} – Present`;
+  }
+
+  if (start.year === end.year) {
+    return `${start.month} – ${end.month} ${start.year}`;
+  }
+
+  return `${start.month} ${start.year} – ${end.month} ${end.year}`;
 }
 
 type ExperienceCardProps = {
@@ -119,7 +174,7 @@ function TimelineColumn({
   isOpen,
   onToggle,
 }: TimelineColumnProps) {
-  const dates = parseTimelineDates(item.period);
+  const dateLabel = parseTimelineDates(item.period);
 
   return (
     <li
@@ -130,16 +185,13 @@ function TimelineColumn({
       <div className="text-center">
         <p
           className={cn(
-            "text-xs font-semibold leading-4 transition-colors duration-200 motion-reduce:transition-none",
+            "font-mono text-xs font-semibold leading-4 transition-colors duration-200 motion-reduce:transition-none",
             isOpen
               ? "text-sky-600 dark:text-sky-300"
-              : "text-zinc-900 dark:text-zinc-50",
+              : "text-zinc-600 dark:text-zinc-400",
           )}
         >
-          {dates.start}
-        </p>
-        <p className="mt-0.5 text-[10px] leading-3.5 text-zinc-500 dark:text-zinc-400">
-          {dates.end ?? "Present"}
+          {dateLabel}
         </p>
       </div>
 

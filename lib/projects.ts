@@ -2,7 +2,7 @@ import { projects } from "#site/content";
 
 export function getProjects() {
   return [...projects].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
   );
 }
 

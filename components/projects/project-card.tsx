@@ -69,7 +69,7 @@ export function ProjectCard({
                 <ProjectStatusBadge
                   status={project.status}
                   accent={project.accent}
-                  className="border border-white/10"
+                  surface="dark"
                 />
               ) : null}
             </div>
