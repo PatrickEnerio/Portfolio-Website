@@ -57,12 +57,12 @@ Recognized with Best Beginner Project at HackAI among all first-time hackathon t
 
 <CaseStudySection title="Tech Stack">
 
-<TechGrid
-  items={[
-    { category: "Frontend", tech: "React, custom SVG charts" },
-    { category: "Backend", tech: "Flask, Python, REST API, WebSockets" },
-    { category: "AI/ML", tech: "OpenAI CLIP for facial analysis" },
-    { category: "Hardware", tech: "Microcontroller integration" },
+<TechPipeline
+  steps={[
+    { label: "Camera", slug: "camera", description: "Live video input" },
+    { label: "OpenAI CLIP", slug: "openai", description: "Facial focus analysis" },
+    { label: "Microcontroller", slug: "microcontroller", description: "Sensor data layer" },
+    { label: "React Dashboard", slug: "react", description: "Live + historical charts" },
   ]}
 />
 

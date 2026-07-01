@@ -7,13 +7,13 @@ import { CaseStudyGrid } from "@/components/projects/mdx/case-study-grid";
 import { CaseStudySection } from "@/components/projects/mdx/case-study-section";
 import { KeyResults } from "@/components/projects/mdx/key-results";
 import { MdxImage } from "@/components/projects/mdx/mdx-image";
-import { TechGrid } from "@/components/projects/mdx/tech-grid";
+import { TechPipeline } from "@/components/projects/mdx/tech-pipeline";
 
 const sharedComponents = {
   Callout,
   Image: MdxImage,
   KeyResults,
-  TechGrid,
+  TechPipeline,
   CaseStudyGrid,
   CaseStudySection,
 };

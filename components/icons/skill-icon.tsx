@@ -1,8 +1,12 @@
 import type { LucideIcon } from "lucide-react";
 import {
+  Camera,
   Code2,
+  Cpu,
+  FileCode,
   GitBranch,
   Layout,
+  Mic,
   Network,
   Radio,
   Shield,
@@ -16,12 +20,15 @@ import {
   SiFlask,
   SiGit,
   SiJavascript,
+  SiMdx,
   SiNextdotjs,
+  SiOpenai,
   SiOpenjdk,
   SiPython,
   SiReact,
   SiTailwindcss,
   SiTypescript,
+  SiVercel,
 } from "react-icons/si";
 import { cn } from "@/lib/utils";
 
@@ -54,6 +61,14 @@ const slugIcons: Record<string, IconType | typeof CursorBrandIcon> = {
   flask: SiFlask,
   fastapi: SiFastapi,
   git: SiGit,
+  openai: SiOpenai,
+  mdx: SiMdx,
+  vercel: SiVercel,
+  camera: Camera,
+  microcontroller: Cpu,
+  whisper: Mic,
+  velite: FileCode,
+  websockets: Radio,
 };
 
 const nameFallbacks: Record<string, LucideIcon> = {
@@ -64,6 +79,11 @@ const nameFallbacks: Record<string, LucideIcon> = {
   "Agile/Scrum": Users,
   "CI/CD": GitBranch,
   "Automated Testing": TestTube,
+  "React Dashboard": Layout,
+  "OpenAI + Whisper": Mic,
+  Camera: Camera,
+  Microcontroller: Cpu,
+  Velite: FileCode,
 };
 
 type SkillIconProps = {

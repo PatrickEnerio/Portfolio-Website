@@ -48,12 +48,12 @@ The site uses a single-page layout for quick scanning, dedicated MDX case study 
 
 <CaseStudySection title="Tech Stack">
 
-<TechGrid
-  items={[
-    { category: "Framework", tech: "Next.js App Router, TypeScript" },
-    { category: "Styling", tech: "Tailwind CSS v4" },
-    { category: "Content", tech: "Velite MDX collections" },
-    { category: "Hosting", tech: "Vercel CI/CD" },
+<TechPipeline
+  steps={[
+    { label: "MDX Content", slug: "mdx", description: "Case studies + frontmatter" },
+    { label: "Velite", slug: "velite", description: "Type-safe build pipeline" },
+    { label: "Next.js", slug: "nextdotjs", description: "App Router + RSC" },
+    { label: "Vercel", slug: "vercel", description: "Hosting + previews" },
   ]}
 />
 
