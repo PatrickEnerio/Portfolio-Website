@@ -10,10 +10,10 @@ export function Contact() {
   return (
     <Section
       id="contact"
+      variant="band"
       eyebrow="04 · Contact"
       title={siteConfig.contact.title}
       description={siteConfig.contact.description}
-      className="border-t border-zinc-200 bg-zinc-50/80 dark:border-zinc-800 dark:bg-zinc-950/80"
     >
       <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
         <div>

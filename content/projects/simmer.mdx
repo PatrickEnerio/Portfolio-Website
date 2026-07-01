@@ -4,33 +4,60 @@ slug: simmer
 description: "Full-stack conversational AI agent with multi-modal voice and chat capabilities for hands-free cooking guidance."
 date: "2025-09-01"
 featured: true
+role: "Frontend Developer"
+timeline: "Sep 2025 – Dec 2025"
+teamSize: 6
+status: shipped
+accent: sky
+highlights:
+  - "Owned all React Native frontend deliverables for a cross-platform mobile app"
+  - "Integrated Whisper STT, TTS, and OpenAI LLM with custom prompt engineering"
+  - "Connected RESTful APIs across 100+ recipe entries with OAuth 2.0 auth"
 tags: ["React Native", "Python", "FastAPI", "OpenAI", "Whisper"]
 links:
   github: "https://github.com/PatrickEnerio"
 image: "/images/projects/simmer.svg"
 ---
 
-## Overview
+<CaseStudyGrid>
 
-Simmer is a full-stack conversational AI agent with multi-modal capabilities (chat and voice) built for ACM. It processes 200+ recipe steps and enables hands-free interaction for real customer use cases.
+<CaseStudySection title="Context">
 
-## Problem
+Simmer is a full-stack conversational AI agent built for ACM with multi-modal capabilities (chat and voice). It processes 200+ recipe steps and enables hands-free interaction for real customer use cases. I owned all frontend deliverables in a cross-functional Agile team of 6 developers.
 
-Home cooks often need step-by-step guidance while their hands are occupied. A mobile assistant needed to combine voice input, personalized recipe data, and contextual AI responses in a seamless cross-platform experience.
+</CaseStudySection>
 
-## Solution
+<CaseStudySection title="Challenge">
 
-I owned all frontend deliverables in React Native—UI/UX layouts, page designs, and navigation routes—while integrating Whisper STT, text-to-speech, and an OpenAI LLM with custom prompt engineering for real-time Q&A. The API framework connects the AI agent to a recipe database and OAuth 2.0 authentication system.
+Home cooks often need step-by-step guidance while their hands are occupied. The product needed to combine voice input, personalized recipe data, and contextual AI responses in a seamless cross-platform mobile experience — all while meeting weekly stakeholder release deadlines.
 
-## Results
+</CaseStudySection>
+
+<CaseStudySection title="Approach">
+
+I designed and built the React Native UI/UX — layouts, page designs, and navigation routes — while integrating Whisper speech-to-text, text-to-speech, and an OpenAI LLM with custom prompt engineering for real-time Q&A. The API framework connects the AI agent to a recipe database and OAuth 2.0 authentication system. I collaborated closely with backend developers on RESTful API contracts and participated in weekly Agile sprints with stakeholder demos.
+
+</CaseStudySection>
+
+<CaseStudySection title="Impact" colSpan={12}>
 
 - Built end-to-end frontend for cross-platform mobile experience with RESTful API integration across 100+ recipe entries
 - Integrated OpenAI LLM with custom prompt engineering for contextual cooking assistance and troubleshooting
 - Collaborated in a cross-functional Agile team of 6 developers with weekly releases to stakeholders
 
-## Tech Stack
+</CaseStudySection>
 
-- **Frontend:** React Native
-- **Backend:** Python, FastAPI
-- **AI:** OpenAI LLM, Whisper STT, text-to-speech
-- **Auth:** OAuth 2.0
+<CaseStudySection title="Tech Stack">
+
+<TechGrid
+  items={[
+    { category: "Frontend", tech: "React Native" },
+    { category: "Backend", tech: "Python, FastAPI" },
+    { category: "AI", tech: "OpenAI LLM, Whisper STT, TTS" },
+    { category: "Auth", tech: "OAuth 2.0" },
+  ]}
+/>
+
+</CaseStudySection>
+
+</CaseStudyGrid>

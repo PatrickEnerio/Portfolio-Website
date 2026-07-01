@@ -3,11 +3,19 @@
 import * as runtime from "react/jsx-runtime";
 import { type ComponentType, useMemo } from "react";
 import { Callout } from "@/components/projects/mdx/callout";
+import { CaseStudyGrid } from "@/components/projects/mdx/case-study-grid";
+import { CaseStudySection } from "@/components/projects/mdx/case-study-section";
+import { KeyResults } from "@/components/projects/mdx/key-results";
 import { MdxImage } from "@/components/projects/mdx/mdx-image";
+import { TechGrid } from "@/components/projects/mdx/tech-grid";
 
 const sharedComponents = {
   Callout,
   Image: MdxImage,
+  KeyResults,
+  TechGrid,
+  CaseStudyGrid,
+  CaseStudySection,
 };
 
 type MDXContentProps = {
@@ -37,7 +45,7 @@ export function MDXContent({ code, components }: MDXContentProps) {
   );
 
   return (
-    <div className="prose prose-zinc max-w-none dark:prose-invert prose-headings:scroll-mt-24 prose-a:text-sky-500 prose-code:text-sky-600 dark:prose-a:text-sky-400 dark:prose-code:text-sky-300">
+    <div className="not-prose">
       {/* eslint-disable-next-line react-hooks/static-components -- Velite compiles MDX to a cached component factory */}
       <Component components={mergedComponents} />
     </div>

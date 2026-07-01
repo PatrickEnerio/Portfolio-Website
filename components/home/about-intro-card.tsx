@@ -28,12 +28,13 @@ export function AboutIntroCard({ intro, className }: AboutIntroCardProps) {
   return (
     <SurfaceCard
       as="article"
+      interactive
       className={cn("flex flex-col gap-3.5 p-5", className)}
     >
       <div
         className={cn(
           "flex h-11 w-11 items-center justify-center rounded-xl",
-          "border border-zinc-200 bg-zinc-100 text-sm font-semibold text-sky-600",
+          "border border-zinc-200 bg-zinc-100 font-mono text-sm font-semibold tabular-nums text-sky-600",
           "dark:border-zinc-700 dark:bg-zinc-800 dark:text-sky-300",
         )}
         aria-hidden="true"

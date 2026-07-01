@@ -12,9 +12,8 @@ type BentoTileProps = {
   variant?: "default" | "muted";
   className?: string;
   id?: string;
+  interactive?: boolean;
 };
-
-const colSpanClasses = bentoColSpanClasses;
 
 const rowSpanClasses: Record<1 | 2, string> = {
   1: "md:row-span-1",
@@ -28,15 +27,16 @@ export function BentoTile({
   variant = "default",
   className,
   id,
+  interactive = true,
 }: BentoTileProps) {
   return (
     <SurfaceCard
       id={id}
+      interactive={interactive}
       className={cn(
-        "p-5 transition-all duration-200 ease-out motion-reduce:transition-none",
-        "hover:-translate-y-0.5 hover:border-zinc-300 dark:hover:border-zinc-700",
+        "p-5",
         variant === "muted" && "bg-zinc-50 dark:bg-zinc-900/80",
-        colSpanClasses[colSpan],
+        bentoColSpanClasses[colSpan],
         rowSpanClasses[rowSpan],
         className,
       )}

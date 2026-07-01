@@ -74,8 +74,8 @@ body {
 .hero-glow {
   background: radial-gradient(
     ellipse 70% 60% at 50% 50%,
-    color-mix(in oklab, #9a9af8 50%, transparent),
-    color-mix(in oklab, #3b57fe 40%, transparent),
+    color-mix(in oklab, #38bdf8 50%, transparent),
+    color-mix(in oklab, #0ea5e9 40%, transparent),
     transparent 68%
   );
 }
@@ -83,8 +83,8 @@ body {
 .hero-glow-outer {
   background: radial-gradient(
     ellipse 90% 80% at 50% 45%,
-    color-mix(in oklab, #9a9af8 30%, transparent),
-    color-mix(in oklab, #3b57fe 18%, transparent),
+    color-mix(in oklab, #38bdf8 30%, transparent),
+    color-mix(in oklab, #0ea5e9 18%, transparent),
     transparent 72%
   );
   filter: blur(28px);
@@ -100,16 +100,16 @@ body {
 
 .hero-photo-frame {
   box-shadow:
-    0 0 0 1px color-mix(in oklab, #9a9af8 25%, transparent),
-    0 24px 48px -16px color-mix(in oklab, #3b57fe 45%, transparent),
-    0 0 72px -8px color-mix(in oklab, #9a9af8 35%, transparent);
+    0 0 0 1px color-mix(in oklab, #38bdf8 25%, transparent),
+    0 24px 48px -16px color-mix(in oklab, #0ea5e9 45%, transparent),
+    0 0 72px -8px color-mix(in oklab, #38bdf8 35%, transparent);
 }
 
 .dark .hero-photo-frame {
   box-shadow:
-    0 0 0 1px color-mix(in oklab, #9a9af8 35%, transparent),
-    0 28px 56px -14px color-mix(in oklab, #3b57fe 55%, transparent),
-    0 0 96px -4px color-mix(in oklab, #9a9af8 45%, transparent);
+    0 0 0 1px color-mix(in oklab, #38bdf8 35%, transparent),
+    0 28px 56px -14px color-mix(in oklab, #0ea5e9 55%, transparent),
+    0 0 96px -4px color-mix(in oklab, #38bdf8 45%, transparent);
 }
 
 .hero-photo-enter {

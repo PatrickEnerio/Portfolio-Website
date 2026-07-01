@@ -14,6 +14,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
   return (
     <Section
       id="projects"
+      variant="band"
       eyebrow="02 · Work"
       title="Featured Projects"
       description="Selected work with links to deeper case studies."

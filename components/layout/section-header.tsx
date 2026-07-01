@@ -16,7 +16,7 @@ export function SectionHeader({
   return (
     <div className={cn("mb-10 max-w-2xl", className)}>
       {eyebrow ? (
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 md:text-sm dark:text-zinc-400">
+        <p className="font-mono text-xs font-medium uppercase tracking-widest text-zinc-500 md:text-sm dark:text-zinc-400">
           {eyebrow}
         </p>
       ) : null}

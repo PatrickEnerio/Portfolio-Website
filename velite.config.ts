@@ -10,6 +10,14 @@ const projects = defineCollection({
       description: s.string().max(200),
       date: s.isodate(),
       featured: s.boolean().default(false),
+      role: s.string().optional(),
+      timeline: s.string().optional(),
+      teamSize: s.number().optional(),
+      highlights: s.array(s.string()).default([]),
+      status: s.enum(["shipped", "prototype", "in-progress"]).optional(),
+      accent: s
+        .enum(["sky", "violet", "emerald", "amber", "rose"])
+        .default("sky"),
       tags: s.array(s.string()).default([]),
       links: s
         .object({

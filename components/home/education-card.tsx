@@ -9,7 +9,14 @@ type EducationCardProps = {
 
 export function EducationCard({ item, className }: EducationCardProps) {
   return (
-    <SurfaceCard as="article" className={cn("flex h-full flex-col p-6", className)}>
+    <SurfaceCard
+      as="article"
+      interactive
+      className={cn(
+        "flex h-full flex-col bg-zinc-50/80 p-6 dark:bg-zinc-900/80",
+        className,
+      )}
+    >
       <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
@@ -19,7 +26,7 @@ export function EducationCard({ item, className }: EducationCardProps) {
             {item.school}
           </p>
         </div>
-        <div className="text-sm text-zinc-500 dark:text-zinc-400">
+        <div className="font-mono text-xs text-zinc-500 sm:text-sm dark:text-zinc-400">
           <p>{item.period}</p>
           {item.gpa ? <p className="mt-1">GPA: {item.gpa}</p> : null}
         </div>
@@ -29,8 +36,20 @@ export function EducationCard({ item, className }: EducationCardProps) {
           <dt className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
             Relevant coursework
           </dt>
-          <dd className="text-sm text-zinc-600 dark:text-zinc-400">
-            {item.relevantCoursework.join(" · ")}
+          <dd>
+            <div className="flex flex-wrap gap-2">
+              {item.relevantCoursework.map((course) => (
+                <span
+                  key={course}
+                  className={cn(
+                    "rounded-full border border-zinc-200 px-2.5 py-0.5 text-xs font-medium text-zinc-600",
+                    "dark:border-zinc-700 dark:text-zinc-400",
+                  )}
+                >
+                  {course}
+                </span>
+              ))}
+            </div>
           </dd>
         </dl>
       ) : null}

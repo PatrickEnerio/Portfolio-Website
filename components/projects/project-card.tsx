@@ -1,15 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import { GitHubIcon } from "@/components/icons/social";
+import { ProjectStatusBadge } from "@/components/projects/project-status-badge";
 import type { Project } from "#site/content";
+import { formatProjectDate } from "@/lib/project-styles";
 import { cn } from "@/lib/utils";
 
 type ProjectCardProps = {
   project: Project;
   className?: string;
+  showMetadata?: boolean;
 };
 
-export function ProjectCard({ project, className }: ProjectCardProps) {
+const VISIBLE_TAGS = 3;
+
+export function ProjectCard({
+  project,
+  className,
+  showMetadata = false,
+}: ProjectCardProps) {
+  const visibleTags = project.tags.slice(0, VISIBLE_TAGS);
+  const overflowCount = project.tags.length - VISIBLE_TAGS;
+
   return (
     <article
       className={cn(
@@ -46,6 +58,45 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         <p className="mt-3 max-w-md text-sm leading-6 text-white/80 md:text-base">
           {project.description}
         </p>
+
+        {showMetadata ? (
+          <div className="mt-4 w-full max-w-md rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-left backdrop-blur-sm">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs text-white/70">
+                {formatProjectDate(project.date)}
+              </span>
+              {project.status ? (
+                <ProjectStatusBadge
+                  status={project.status}
+                  accent={project.accent}
+                  className="border border-white/10"
+                />
+              ) : null}
+            </div>
+            {project.role ? (
+              <p className="mt-2 text-xs font-medium text-white/90">
+                {project.role}
+              </p>
+            ) : null}
+            {visibleTags.length > 0 ? (
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {visibleTags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-white/10 px-2 py-0.5 text-xs text-white/80"
+                  >
+                    {tag}
+                  </span>
+                ))}
+                {overflowCount > 0 ? (
+                  <span className="rounded-full bg-white/10 px-2 py-0.5 text-xs text-white/60">
+                    +{overflowCount}
+                  </span>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
           <Link

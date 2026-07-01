@@ -4,32 +4,59 @@ slug: portfolio-website
 description: "This site — a Next.js portfolio with MDX case studies and a content-driven architecture."
 date: "2025-06-01"
 featured: false
+role: "Sole Developer"
+timeline: "Jun 2025 – Present"
+status: shipped
+accent: emerald
+highlights:
+  - "Type-safe MDX content pipeline catches missing fields at build time"
+  - "Content updates require only adding an MDX file and pushing to GitHub"
+  - "Deployed on Vercel with automatic previews on every push"
 tags: ["Next.js", "TypeScript", "MDX", "Tailwind CSS"]
 links:
   github: "https://github.com/PatrickEnerio/Portfolio-Website"
 image: "/images/projects/portfolio.svg"
 ---
 
-## Overview
+<CaseStudyGrid>
 
-A personal portfolio built with Next.js, TypeScript, and Velite for type-safe MDX content. The goal was a fast, accessible site that doubles as a demonstration of my engineering practices.
+<CaseStudySection title="Context">
 
-## Problem
+A personal portfolio built with Next.js, TypeScript, and Velite for type-safe MDX content. I designed and developed the entire site as a demonstration of my engineering practices — fast, accessible, and content-driven.
 
-I needed a single place to present my projects, experience, and contact information to recruiters — with enough depth to show how I think about building software.
+</CaseStudySection>
 
-## Solution
+<CaseStudySection title="Challenge">
 
-The site uses a single-page layout for quick scanning, dedicated MDX case study pages for deeper project write-ups, and a content layer that validates frontmatter at build time. Dark mode, semantic HTML, and subtle scroll animations keep the experience polished without sacrificing performance.
+I needed a single place to present my projects, experience, and contact information to recruiters — with enough depth to show how I think about building software, without sacrificing scanability for busy hiring managers.
 
-## Results
+</CaseStudySection>
+
+<CaseStudySection title="Approach">
+
+The site uses a single-page layout for quick scanning, dedicated MDX case study pages for deeper project write-ups, and a content layer that validates frontmatter at build time. Dark mode, semantic HTML, and subtle scroll animations keep the experience polished without sacrificing performance. The Velite schema enforces required fields so broken content never ships.
+
+</CaseStudySection>
+
+<CaseStudySection title="Impact" colSpan={12}>
 
 - Content updates require only adding an MDX file and pushing to GitHub
 - Type-safe project schema catches missing fields at build time
 - Deployed on Vercel with automatic previews on every push
 
-## Tech Stack
+</CaseStudySection>
 
-- Next.js App Router, TypeScript, Tailwind CSS
-- Velite for MDX content collections
-- Vercel for hosting and CI/CD
+<CaseStudySection title="Tech Stack">
+
+<TechGrid
+  items={[
+    { category: "Framework", tech: "Next.js App Router, TypeScript" },
+    { category: "Styling", tech: "Tailwind CSS v4" },
+    { category: "Content", tech: "Velite MDX collections" },
+    { category: "Hosting", tech: "Vercel CI/CD" },
+  ]}
+/>
+
+</CaseStudySection>
+
+</CaseStudyGrid>

@@ -4,37 +4,68 @@ slug: sensora
 description: "Full-stack real-time focus tracking dashboard integrating OpenAI CLIP facial analysis with live WebSocket streaming."
 date: "2026-03-01"
 featured: true
+role: "Full-stack Developer"
+timeline: "48-hour hackathon"
+teamSize: 4
+status: prototype
+accent: violet
+highlights:
+  - "Engineered WebSocket streaming for live focus scores alongside a REST API for session history"
+  - "Built responsive UI with pipeline visualization and custom SVG charts"
+  - "Delivered a complete full-stack prototype within a hackathon timeline"
 tags: ["React", "Flask", "Python", "OpenAI CLIP", "WebSockets"]
 links:
   github: "https://github.com/PatrickEnerio"
 image: "/images/projects/sensora.svg"
 ---
 
-## Overview
+<CaseStudyGrid>
 
-Sensora is a full-stack real-time focus tracking dashboard that integrates a camera-based facial analysis pipeline (OpenAI CLIP) with a React frontend, visualizing biometric engagement scores across live and historical sessions.
+<CaseStudySection title="Context">
 
-## Problem
+Sensora is a full-stack real-time focus tracking dashboard that integrates camera-based facial analysis (OpenAI CLIP) with a React frontend, visualizing biometric engagement scores across live and historical sessions. Built during HackAI in a team of 4.
 
-Understanding focus and engagement during study or work sessions is difficult without objective, real-time feedback. Existing tools rarely combine live biometric signals with an intuitive dashboard for both live monitoring and session history.
+</CaseStudySection>
 
-## Solution
+<CaseStudySection title="Challenge">
 
-I built a pipeline from camera input through CLIP-based analysis to a microcontroller layer, with a React frontend consuming live focus scores over WebSockets and historical data via REST. A custom SVG line chart normalizes raw sensor data (unix timestamps, 0–1 scores) into display-ready formats.
+Understanding focus and engagement during study or work sessions is difficult without objective, real-time feedback. Existing tools rarely combine live biometric signals with an intuitive dashboard for both live monitoring and session history — especially within a tight hackathon deadline.
+
+</CaseStudySection>
+
+<CaseStudySection title="Approach">
+
+I built the pipeline from camera input through CLIP-based analysis to a microcontroller layer, with a React frontend consuming live focus scores over WebSockets and historical data via REST. A custom SVG line chart normalizes raw sensor data (unix timestamps, 0–1 scores) into display-ready formats. The UI includes an interactive processing pipeline visualization (Camera → CLIP → Microcontroller) with tooltips and animated charts.
 
 <Callout type="info">
 Recognized with Best Beginner Project at HackAI among all first-time hackathon teams.
 </Callout>
 
-## Results
+</CaseStudySection>
 
-- Engineered WebSocket integration for live focus score streaming alongside a REST API for historical sessions
-- Designed responsive UI with processing pipeline visualization (Camera → CLIP → Microcontroller), interactive tooltips, and animated charts
-- Delivered a complete full-stack prototype within a hackathon timeline
+<CaseStudySection title="Impact" colSpan={12}>
 
-## Tech Stack
+<KeyResults
+  items={[
+    "Engineered WebSocket integration for live focus score streaming alongside a REST API for historical sessions",
+    "Designed responsive UI with processing pipeline visualization, interactive tooltips, and animated charts",
+    "Delivered a complete full-stack prototype within a hackathon timeline",
+  ]}
+/>
 
-- **Frontend:** React, custom SVG charts, responsive UI
-- **Backend:** Flask, Python, REST API, WebSockets
-- **AI/ML:** OpenAI CLIP for facial analysis
-- **Hardware:** Microcontroller integration for sensor data
+</CaseStudySection>
+
+<CaseStudySection title="Tech Stack">
+
+<TechGrid
+  items={[
+    { category: "Frontend", tech: "React, custom SVG charts" },
+    { category: "Backend", tech: "Flask, Python, REST API, WebSockets" },
+    { category: "AI/ML", tech: "OpenAI CLIP for facial analysis" },
+    { category: "Hardware", tech: "Microcontroller integration" },
+  ]}
+/>
+
+</CaseStudySection>
+
+</CaseStudyGrid>

@@ -12,6 +12,7 @@ export function SkillHighlightCard({ skill, className }: SkillHighlightCardProps
   return (
     <SurfaceCard
       as="article"
+      interactive
       className={cn("flex flex-col gap-3.5 p-5", className)}
     >
       <div
