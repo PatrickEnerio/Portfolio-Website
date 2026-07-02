@@ -24,6 +24,31 @@ const labelToSlug: Record<string, string> = {
   git: "git",
 };
 
+const labelAbbreviations: Record<string, string> = {
+  "React Native": "RN",
+  Python: "Py",
+  FastAPI: "API",
+  OpenAI: "AI",
+  Whisper: "STT",
+  React: "React",
+  Flask: "Flask",
+  "OpenAI CLIP": "CLIP",
+  WebSockets: "WS",
+  "Next.js": "Next",
+  TypeScript: "TS",
+  MDX: "MDX",
+  "Tailwind CSS": "TW",
+  "OAuth 2.0": "Auth",
+  JavaScript: "JS",
+  "OpenAI + Whisper": "AI",
+  "MDX Content": "MDX",
+  Velite: "Velite",
+  Vercel: "Vercel",
+  Camera: "Cam",
+  Microcontroller: "MCU",
+  "React Dashboard": "UI",
+};
+
 export function resolveTechSlug(label: string): string | undefined {
   const normalized = label.toLowerCase().trim();
   if (labelToSlug[normalized]) {
@@ -39,10 +64,18 @@ export function resolveTechSlug(label: string): string | undefined {
   return undefined;
 }
 
-export function truncateTechLabel(label: string, maxLength = 14): string {
-  if (label.length <= maxLength) {
-    return label;
+export function abbreviateTechLabel(label: string): string {
+  if (labelAbbreviations[label]) {
+    return labelAbbreviations[label];
   }
 
-  return `${label.slice(0, maxLength - 1)}…`;
+  const words = label.split(/[\s+/]+/).filter(Boolean);
+  if (words.length > 1) {
+    return words
+      .map((word) => word[0]?.toUpperCase() ?? "")
+      .join("")
+      .slice(0, 4);
+  }
+
+  return label.length <= 6 ? label : label.slice(0, 5);
 }

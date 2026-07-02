@@ -11,7 +11,13 @@ export const projectStatusLabels: Record<
 
 export const projectAccentStyles: Record<
   Project["accent"],
-  { gradient: string; text: string; badge: string; onDarkBadge: string }
+  {
+    gradient: string;
+    text: string;
+    badge: string;
+    onDarkBadge: string;
+    techChip: string;
+  }
 > = {
   sky: {
     gradient:
@@ -20,6 +26,8 @@ export const projectAccentStyles: Record<
     badge: "bg-sky-500/20 text-sky-700 dark:text-sky-300",
     onDarkBadge:
       "border border-sky-300/40 bg-sky-400/30 text-sky-50",
+    techChip:
+      "border-sky-200 bg-sky-500/10 text-sky-700 dark:border-sky-800 dark:bg-sky-500/15 dark:text-sky-300",
   },
   violet: {
     gradient:
@@ -28,6 +36,8 @@ export const projectAccentStyles: Record<
     badge: "bg-violet-500/20 text-violet-700 dark:text-violet-300",
     onDarkBadge:
       "border border-violet-300/40 bg-violet-400/30 text-violet-50",
+    techChip:
+      "border-violet-200 bg-violet-500/10 text-violet-700 dark:border-violet-800 dark:bg-violet-500/15 dark:text-violet-300",
   },
   emerald: {
     gradient:
@@ -36,6 +46,8 @@ export const projectAccentStyles: Record<
     badge: "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300",
     onDarkBadge:
       "border border-emerald-300/40 bg-emerald-400/30 text-emerald-50",
+    techChip:
+      "border-emerald-200 bg-emerald-500/10 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300",
   },
   amber: {
     gradient:
@@ -44,6 +56,8 @@ export const projectAccentStyles: Record<
     badge: "bg-amber-500/20 text-amber-700 dark:text-amber-300",
     onDarkBadge:
       "border border-amber-300/40 bg-amber-400/30 text-amber-50",
+    techChip:
+      "border-amber-200 bg-amber-500/10 text-amber-700 dark:border-amber-800 dark:bg-amber-500/15 dark:text-amber-300",
   },
   rose: {
     gradient:
@@ -52,6 +66,8 @@ export const projectAccentStyles: Record<
     badge: "bg-rose-500/20 text-rose-700 dark:text-rose-300",
     onDarkBadge:
       "border border-rose-300/40 bg-rose-400/30 text-rose-50",
+    techChip:
+      "border-rose-200 bg-rose-500/10 text-rose-700 dark:border-rose-800 dark:bg-rose-500/15 dark:text-rose-300",
   },
 };
 
