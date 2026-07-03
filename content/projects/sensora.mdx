@@ -1,7 +1,7 @@
 ---
-title: "Sensora — Biometric Focus Tracking Dashboard"
+title: "Sensora — Privacy-First Focus Tracking"
 slug: sensora
-description: "Full-stack real-time focus tracking dashboard integrating OpenAI CLIP facial analysis with live WebSocket streaming."
+description: "A privacy-first focus dashboard that surfaces what actually helps you learn — visualizing habits, suggesting better sessions, and keeping data local."
 date: "2026-03-01"
 featured: true
 role: "Full-stack Developer"
@@ -10,32 +10,32 @@ teamSize: 4
 status: prototype
 accent: violet
 highlights:
-  - "Engineered WebSocket streaming for live focus scores alongside a REST API for session history"
-  - "Built responsive UI with pipeline visualization and custom SVG charts"
-  - "Delivered a complete full-stack prototype within a hackathon timeline"
-tags: ["React", "Flask", "Python", "OpenAI CLIP", "WebSockets"]
+  - "Privacy-first: all analysis runs locally so study habits never leave the device."
+  - "Actionable insights: clear session recommendations, not just charts of past focus."
+  - "Lightweight and demo-ready: small footprint, zero mandatory accounts, built for judges."
+tags: ["React", "Flask", "Python", "OpenAI CLIP", "MediaPipe"]
 links:
   github: "https://github.com/PatrickEnerio"
-image: "/images/projects/sensora.svg"
+image: "/images/projects/sensora.png"
 ---
 
 <CaseStudyGrid>
 
 <CaseStudySection title="Context">
 
-Sensora is a full-stack real-time focus tracking dashboard that integrates camera-based facial analysis (OpenAI CLIP) with a React frontend, visualizing biometric engagement scores across live and historical sessions. Built during HackAI in a team of 4.
+During our hackathon we noticed students struggle to translate time spent into real learning. Sensora was born to surface what actually helps you focus — visualizing your habits, suggesting better sessions, and keeping data private and lightweight.
 
 </CaseStudySection>
 
 <CaseStudySection title="Challenge">
 
-Understanding focus and engagement during study or work sessions is difficult without objective, real-time feedback. Existing tools rarely combine live biometric signals with an intuitive dashboard for both live monitoring and session history — especially within a tight hackathon deadline.
+Focus tools often equate hours at a desk with progress, while cloud-based trackers raise privacy concerns and add setup friction. We needed objective, real-time engagement signals that stay on-device, turn into recommendations students can act on immediately, and still ship as a lightweight prototype within a 48-hour hackathon.
 
 </CaseStudySection>
 
 <CaseStudySection title="Approach">
 
-I built the pipeline from camera input through CLIP-based analysis to a microcontroller layer, with a React frontend consuming live focus scores over WebSockets and historical data via REST. A custom SVG line chart normalizes raw sensor data (unix timestamps, 0–1 scores) into display-ready formats. The UI includes an interactive processing pipeline visualization (Camera → CLIP → Microcontroller) with tooltips and animated charts.
+We built a local vision pipeline — camera input, MediaPipe face and eye tracking, and CLIP-based engagement analysis — feeding a Flask backend that stores focus samples and generates study recommendations. A React dashboard visualizes live and historical sessions with a dark, minimal UI designed around the product promise: study sessions shaped by you, for you. No mandatory accounts; analysis stays on the machine.
 
 <Callout type="info">
 Recognized with Best Beginner Project at HackAI among all first-time hackathon teams.
@@ -45,13 +45,7 @@ Recognized with Best Beginner Project at HackAI among all first-time hackathon t
 
 <CaseStudySection title="Impact" colSpan={12}>
 
-<KeyResults
-  items={[
-    "Engineered WebSocket integration for live focus score streaming alongside a REST API for historical sessions",
-    "Designed responsive UI with processing pipeline visualization, interactive tooltips, and animated charts",
-    "Delivered a complete full-stack prototype within a hackathon timeline",
-  ]}
-/>
+Sensora showed judges and teammates that focus feedback can be private, actionable, and light enough to demo under pressure — winning Best Beginner Project at HackAI and giving students a clearer path from time spent to habits that actually support learning.
 
 </CaseStudySection>
 
@@ -61,7 +55,8 @@ Recognized with Best Beginner Project at HackAI among all first-time hackathon t
   steps={[
     { label: "Camera", slug: "camera", description: "Live video input" },
     { label: "OpenAI CLIP", slug: "openai", description: "Facial focus analysis" },
-    { label: "Microcontroller", slug: "microcontroller", description: "Sensor data layer" },
+    { label: "MediaPipe", description: "Face and eye tracking" },
+    { label: "Flask", slug: "flask", description: "Focus API + recommendations" },
     { label: "React Dashboard", slug: "react", description: "Live + historical charts" },
   ]}
 />
