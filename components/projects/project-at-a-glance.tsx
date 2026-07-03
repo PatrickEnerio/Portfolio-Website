@@ -7,11 +7,11 @@ type ProjectAtAGlanceProps = {
 
 export function ProjectAtAGlance({ project }: ProjectAtAGlanceProps) {
   return (
-    <>
+    <div className="flex h-full flex-col">
       <p className="font-mono text-xs font-medium uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
         At a glance
       </p>
-      <dl className="mt-4 space-y-3 text-sm">
+      <dl className="mt-4 flex flex-1 flex-col justify-center gap-5 text-sm">
         {project.role ? (
           <div>
             <dt className="text-zinc-500 dark:text-zinc-400">Role</dt>
@@ -43,6 +43,6 @@ export function ProjectAtAGlance({ project }: ProjectAtAGlanceProps) {
           </dd>
         </div>
       </dl>
-    </>
+    </div>
   );
 }

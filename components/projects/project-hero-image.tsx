@@ -70,7 +70,7 @@ export function ProjectHeroImage({
         alt={project.title}
         fill
         priority={priority}
-        className="object-cover"
+        className="bg-[#f7f4ed] object-contain object-center dark:bg-zinc-900"
       />
     </div>
   );

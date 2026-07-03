@@ -93,7 +93,11 @@ export function ProjectHero({ project }: ProjectHeroProps) {
             ) : null}
           </BentoTile>
 
-          <BentoTile colSpan={5} variant="muted" className="p-5 md:p-6">
+          <BentoTile
+            colSpan={5}
+            variant="muted"
+            className="flex h-full flex-col p-5 md:p-6"
+          >
             <ProjectAtAGlance project={project} />
           </BentoTile>
 

@@ -1,49 +1,46 @@
 ---
 title: "Simmer — AI-Powered Voice Cooking Assistant"
 slug: simmer
-description: "Full-stack conversational AI agent with multi-modal voice and chat capabilities for hands-free cooking guidance."
+description: "Simmer is a voice-controlled cooking app that imports recipes from social media and the web, then uses a conversational AI assistant to guide users hands-free through cooking, step by step."
 date: "2025-09-01"
 featured: true
 role: "Frontend Developer"
 timeline: "Sep 2025 – Dec 2025"
-teamSize: 6
-status: shipped
+teamSize: 4
 accent: sky
 highlights:
-  - "Owned all React Native frontend deliverables for a cross-platform mobile app"
-  - "Integrated Whisper STT, TTS, and OpenAI LLM with custom prompt engineering"
-  - "Connected RESTful APIs across 100+ recipe entries with OAuth 2.0 auth"
-tags: ["React Native", "Python", "FastAPI", "OpenAI", "Whisper"]
+  - 'Built a real-time voice Q&A assistant ("Simmy") that lets users navigate recipe steps and ask ingredient-substitution or clarification questions without touching their phone.'
+  - "Engineered a low-latency streaming pipeline for continuous speech-to-text and text-to-speech, enabling natural, back-and-forth conversational interaction instead of static playback."
+  - "Shipped a cross-platform (iOS/Android) app using React Native, with a recipe-import pipeline that parses YouTube, Instagram, TikTok, and general web links into structured, LLM-generated cooking instructions."
+tags: ["React Native", "Python", "Flask", "Gemini", "LangChain"]
 links:
   github: "https://github.com/PatrickEnerio"
-image: "/images/projects/simmer.svg"
+image: "/images/projects/simmer.png"
 ---
 
 <CaseStudyGrid>
 
 <CaseStudySection title="Context">
 
-Simmer is a full-stack conversational AI agent built for ACM with multi-modal capabilities (chat and voice). It processes 200+ recipe steps and enables hands-free interaction for real customer use cases. I owned all frontend deliverables in a cross-functional Agile team of 6 developers.
+Simmer was created to solve a common kitchen problem: home cooks constantly need to check their phones mid-recipe, breaking flow and dirtying their screens, especially when following recipes saved from TikTok, Instagram, or YouTube that aren't formatted for hands-free use.
 
 </CaseStudySection>
 
 <CaseStudySection title="Challenge">
 
-Home cooks often need step-by-step guidance while their hands are occupied. The product needed to combine voice input, personalized recipe data, and contextual AI responses in a seamless cross-platform mobile experience — all while meeting weekly stakeholder release deadlines.
+The team had to research and select libraries compatible with their tech stack for real-time audio streaming, then iterate extensively on streaming buffer sizes and speech-to-text activation thresholds to minimize latency and make the voice assistant feel truly conversational.
 
 </CaseStudySection>
 
 <CaseStudySection title="Approach">
 
-I designed and built the React Native UI/UX — layouts, page designs, and navigation routes — while integrating Whisper speech-to-text, text-to-speech, and an OpenAI LLM with custom prompt engineering for real-time Q&A. The API framework connects the AI agent to a recipe database and OAuth 2.0 authentication system. I collaborated closely with backend developers on RESTful API contracts and participated in weekly Agile sprints with stakeholder demos.
+The team combined a Flask backend for data handling with a Gemini LLM (orchestrated via LangChain) to transform parsed recipe content into dialogue-style, conversational instructions, then layered in bidirectional audio streaming to keep speech-to-text and text-to-speech responsive in real time.
 
 </CaseStudySection>
 
 <CaseStudySection title="Impact" colSpan={12}>
 
-- Built end-to-end frontend for cross-platform mobile experience with RESTful API integration across 100+ recipe entries
-- Integrated OpenAI LLM with custom prompt engineering for contextual cooking assistance and troubleshooting
-- Collaborated in a cross-functional Agile team of 6 developers with weekly releases to stakeholders
+By combining multi-platform recipe import with true hands-free, conversational voice guidance, Simmer differentiated itself from competitors like Umami and SideChef, which lack real-time Q&A, positioning it to turn saved social media recipes into an actually cookable, guided experience.
 
 </CaseStudySection>
 
@@ -51,10 +48,10 @@ I designed and built the React Native UI/UX — layouts, page designs, and navig
 
 <TechPipeline
   steps={[
-    { label: "React Native", slug: "react", description: "Cross-platform mobile UI" },
-    { label: "FastAPI", slug: "fastapi", description: "Recipe + auth API" },
-    { label: "OpenAI + Whisper", slug: "openai", description: "LLM, STT, and TTS" },
-    { label: "OAuth 2.0", description: "Secure sign-in" },
+    { label: "React Native", slug: "react", description: "Cross-platform iOS/Android app" },
+    { label: "Flask", slug: "flask", description: "Recipe data + API layer" },
+    { label: "Gemini + LangChain", description: "LLM-orchestrated conversational instructions" },
+    { label: "Recipe import", description: "YouTube, Instagram, TikTok, and web links" },
   ]}
 />
 
