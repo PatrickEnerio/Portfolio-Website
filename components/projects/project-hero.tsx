@@ -114,9 +114,11 @@ export function ProjectHero({ project }: ProjectHeroProps) {
             />
           </BentoTile>
 
-          <BentoTile colSpan={5} variant="muted" className="p-5 md:p-6">
-            <ProjectTechStack project={project} />
-          </BentoTile>
+          {project.tags.length > 0 ? (
+            <BentoTile colSpan={5} variant="muted" className="p-5 md:p-6">
+              <ProjectTechStack project={project} />
+            </BentoTile>
+          ) : null}
 
           {project.teamSize ? (
             <BentoTile
