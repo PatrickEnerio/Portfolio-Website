@@ -2,6 +2,7 @@ import { SkillIcon } from "@/components/icons/skill-icon";
 import { SurfaceCard } from "@/components/ui/surface-card";
 import type { FeaturedSkill } from "@/data/skills";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type SkillHighlightCardProps = {
   skill: FeaturedSkill;
@@ -32,6 +33,36 @@ export function SkillHighlightCard({ skill, className }: SkillHighlightCardProps
           {skill.description}
         </p>
       </div>
+      {skill.usedIn && skill.usedIn.length > 0 ? (
+        <div className="mt-auto space-y-1.5 border-t border-zinc-200 pt-3 dark:border-zinc-800">
+          <p className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+            Used in
+          </p>
+          <ul className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs">
+            {skill.usedIn.map((entry, index) => (
+              <li key={entry.label} className="inline-flex items-center gap-1.5">
+                {index > 0 ? (
+                  <span className="text-zinc-300 dark:text-zinc-600" aria-hidden>
+                    ·
+                  </span>
+                ) : null}
+                {entry.href ? (
+                  <Link
+                    href={entry.href}
+                    className="font-medium text-sky-600 hover:text-sky-700 dark:text-sky-300 dark:hover:text-sky-200"
+                  >
+                    {entry.label}
+                  </Link>
+                ) : (
+                  <span className="font-medium text-zinc-600 dark:text-zinc-400">
+                    {entry.label}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </SurfaceCard>
   );
 }

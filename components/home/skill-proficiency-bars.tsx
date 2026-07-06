@@ -1,5 +1,6 @@
 import { SkillIcon } from "@/components/icons/skill-icon";
-import type { SkillGroup, SkillItem } from "@/data/skills";
+import type { SkillGroup, SkillItem, SkillTier } from "@/data/skills";
+import { TIER_LABELS } from "@/data/skills";
 import { cn } from "@/lib/utils";
 
 type SkillProficiencyBarsProps = {
@@ -8,8 +9,33 @@ type SkillProficiencyBarsProps = {
   limitPerGroup?: number;
 };
 
+function TierIndicator({ tier }: { tier: SkillTier }) {
+  const label = TIER_LABELS[tier];
+
+  return (
+    <div
+      className="flex items-center gap-1"
+      role="img"
+      aria-label={`${label} proficiency`}
+    >
+      {([1, 2, 3, 4] as const).map((level) => (
+        <span
+          key={level}
+          aria-hidden
+          className={cn(
+            "h-2 w-5 rounded-full transition-colors",
+            level <= tier
+              ? "bg-sky-600 dark:bg-sky-300"
+              : "bg-zinc-100 dark:bg-zinc-800",
+          )}
+        />
+      ))}
+    </div>
+  );
+}
+
 function ProficiencyRow({ skill }: { skill: SkillItem }) {
-  const clamped = Math.max(0, Math.min(100, skill.proficiency));
+  const label = TIER_LABELS[skill.tier];
 
   return (
     <div className="flex items-center gap-2.5 sm:gap-3">
@@ -25,21 +51,11 @@ function ProficiencyRow({ skill }: { skill: SkillItem }) {
       <span className="w-24 shrink-0 text-sm text-zinc-900 sm:w-36 dark:text-zinc-50">
         {skill.name}
       </span>
-      <div
-        className="h-2 min-w-0 flex-1 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
-        role="progressbar"
-        aria-valuenow={clamped}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-label={`${skill.name} proficiency`}
-      >
-        <div
-          className="h-full rounded-full bg-sky-600 dark:bg-sky-300"
-          style={{ width: `${clamped}%` }}
-        />
+      <div className="min-w-0 flex-1">
+        <TierIndicator tier={skill.tier} />
       </div>
-      <span className="w-9 shrink-0 text-right text-xs text-zinc-400 dark:text-zinc-500">
-        {clamped}%
+      <span className="w-20 shrink-0 text-right text-xs font-medium text-zinc-500 dark:text-zinc-400">
+        {label}
       </span>
     </div>
   );

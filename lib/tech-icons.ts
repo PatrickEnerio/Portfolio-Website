@@ -26,6 +26,9 @@ const labelToSlug: Record<string, string> = {
 
 const labelAbbreviations: Record<string, string> = {
   "React Native": "RN",
+  "REST APIs": "API",
+  "Agile/Scrum": "Agile",
+  "Automated Testing": "Test",
   Python: "Py",
   FastAPI: "API",
   OpenAI: "AI",

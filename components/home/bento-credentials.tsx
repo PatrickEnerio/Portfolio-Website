@@ -7,7 +7,7 @@ import { BentoTile } from "@/components/layout/bento-tile";
 import { Section } from "@/components/layout/section";
 import { achievements } from "@/data/achievements";
 import { experience } from "@/data/experience";
-import { featuredSkills, skillGroups } from "@/data/skills";
+import { featuredSkills, skillGroups, softSkills } from "@/data/skills";
 
 export function BentoCredentials() {
   return (
@@ -26,13 +26,23 @@ export function BentoCredentials() {
           <ExperienceTimeline items={experience} />
         </BentoTile>
 
-        <BentoCell colSpan={5} className="flex flex-col gap-3">
-          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
-            Featured skills
-          </h3>
-          {featuredSkills.map((skill) => (
-            <SkillHighlightCard key={skill.slug} skill={skill} />
-          ))}
+        <BentoCell colSpan={5} className="flex flex-col gap-6">
+          <div className="flex flex-col gap-3">
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+              Featured skills
+            </h3>
+            {featuredSkills.map((skill) => (
+              <SkillHighlightCard key={skill.slug} skill={skill} />
+            ))}
+          </div>
+          <div className="flex flex-col gap-3">
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+              Strengths
+            </h3>
+            {softSkills.map((skill) => (
+              <SkillHighlightCard key={skill.slug} skill={skill} />
+            ))}
+          </div>
         </BentoCell>
 
         <BentoTile colSpan={5} className="p-4 md:p-5">

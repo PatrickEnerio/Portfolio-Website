@@ -6,6 +6,7 @@ import {
   FileCode,
   GitBranch,
   Layout,
+  MessageCircle,
   Mic,
   Network,
   Radio,
@@ -84,6 +85,10 @@ const nameFallbacks: Record<string, LucideIcon> = {
   Camera: Camera,
   Microcontroller: Cpu,
   Velite: FileCode,
+  "Cross-functional leadership": Users,
+  "Stakeholder communication": MessageCircle,
+  "Agile delivery": GitBranch,
+  "React Native": Layout,
 };
 
 type SkillIconProps = {

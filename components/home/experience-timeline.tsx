@@ -1,13 +1,16 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { ExperienceDetailModal } from "@/components/home/experience-detail-modal";
+import { TechTagList } from "@/components/home/tech-tag";
 import type { Experience } from "@/data/experience";
 import { cn } from "@/lib/utils";
+import { useCallback, useEffect, useState } from "react";
 
 type ExperienceTimelineProps = {
   items: Experience[];
 };
+
+const ITEMS_PER_ROW = 3;
 
 const MONTH_ABBREVS: Record<string, string> = {
   january: "Jan",
@@ -76,20 +79,37 @@ function parseTimelineDates(period: string): string {
   return `${start.month} ${start.year} – ${end.month} ${end.year}`;
 }
 
+function chunkItems<T>(items: T[], size: number): T[][] {
+  const rows: T[][] = [];
+
+  for (let index = 0; index < items.length; index += size) {
+    rows.push(items.slice(index, index + size));
+  }
+
+  return rows;
+}
+
 type ExperienceCardProps = {
   item: Experience;
   index: number;
-  isOpen: boolean;
-  onToggle: () => void;
+  isActive: boolean;
+  onLearnMore: () => void;
 };
 
-function ExperienceCard({ item, index, isOpen, onToggle }: ExperienceCardProps) {
+function ExperienceCard({ item, index, isActive, onLearnMore }: ExperienceCardProps) {
   const titleId = `experience-title-${index}`;
-  const panelId = `experience-panel-${index}`;
 
   return (
-    <article className="flex h-full w-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
-      <div className="p-5">
+    <article
+      id={`experience-${item.slug}`}
+      className={cn(
+        "flex h-full w-full scroll-mt-24 flex-col rounded-2xl border bg-white dark:bg-zinc-900",
+        isActive
+          ? "border-sky-300 dark:border-sky-700"
+          : "border-zinc-200 dark:border-zinc-800",
+      )}
+    >
+      <div className="flex h-full flex-col p-5">
         <h3
           id={titleId}
           className="text-base font-semibold text-zinc-900 dark:text-zinc-50"
@@ -99,59 +119,21 @@ function ExperienceCard({ item, index, isOpen, onToggle }: ExperienceCardProps) 
         <p className="mt-1 text-sm font-medium text-sky-600 dark:text-sky-300">
           {item.organization}
         </p>
-        <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+        {item.technologies.length > 0 ? (
+          <TechTagList tags={item.technologies} className="mt-3" />
+        ) : null}
+        <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
           {item.description}
         </p>
 
         <button
           type="button"
-          aria-expanded={isOpen}
-          aria-controls={panelId}
-          onClick={onToggle}
-          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-sky-600 hover:text-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:text-sky-300 dark:hover:text-sky-200"
+          aria-haspopup="dialog"
+          onClick={onLearnMore}
+          className="mt-auto inline-flex pt-4 text-sm font-medium text-sky-600 hover:text-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:text-sky-300 dark:hover:text-sky-200"
         >
-          {isOpen ? "Show less" : "Learn more"}
-          <ChevronDown
-            className={cn(
-              "h-4 w-4 transition-transform duration-300 ease-out motion-reduce:transition-none",
-              isOpen && "rotate-180",
-            )}
-            aria-hidden
-          />
+          Learn more
         </button>
-      </div>
-
-      <div
-        className={cn(
-          "grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none",
-          isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
-        )}
-      >
-        <div className="overflow-hidden">
-          <div
-            id={panelId}
-            role="region"
-            aria-labelledby={titleId}
-            className={cn(
-              "border-t border-zinc-200 px-5 pb-5 pt-4 transition-all duration-300 ease-out motion-reduce:transition-none dark:border-zinc-800",
-              isOpen
-                ? "translate-y-0 opacity-100"
-                : "-translate-y-1.5 opacity-0",
-            )}
-          >
-            <ul className="space-y-2.5 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-              {item.highlights.map((highlight) => (
-                <li key={highlight} className="flex gap-2">
-                  <span
-                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-400"
-                    aria-hidden
-                  />
-                  <span>{highlight}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
       </div>
     </article>
   );
@@ -162,8 +144,8 @@ type TimelineColumnProps = {
   index: number;
   isFirst: boolean;
   isLast: boolean;
-  isOpen: boolean;
-  onToggle: () => void;
+  isActive: boolean;
+  onLearnMore: () => void;
 };
 
 function TimelineColumn({
@@ -171,22 +153,18 @@ function TimelineColumn({
   index,
   isFirst,
   isLast,
-  isOpen,
-  onToggle,
+  isActive,
+  onLearnMore,
 }: TimelineColumnProps) {
   const dateLabel = parseTimelineDates(item.period);
 
   return (
-    <li
-      className={cn(
-        "flex w-[min(85vw,20rem)] shrink-0 snap-center flex-col items-center md:w-auto md:shrink",
-      )}
-    >
+    <li className="flex min-w-0 flex-col items-center">
       <div className="text-center">
         <p
           className={cn(
             "font-mono text-xs font-semibold leading-4 transition-colors duration-200 motion-reduce:transition-none",
-            isOpen
+            isActive
               ? "text-sky-600 dark:text-sky-300"
               : "text-zinc-600 dark:text-zinc-400",
           )}
@@ -212,7 +190,7 @@ function TimelineColumn({
           aria-hidden
           className={cn(
             "relative z-10 h-3 w-3 rounded-full border-2 transition-colors duration-200 motion-reduce:transition-none",
-            isOpen
+            isActive
               ? "border-sky-400 bg-sky-400"
               : "border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900",
           )}
@@ -220,34 +198,94 @@ function TimelineColumn({
       </div>
 
       <div className="mt-6 w-full">
-        <ExperienceCard item={item} index={index} isOpen={isOpen} onToggle={onToggle} />
+        <ExperienceCard
+          item={item}
+          index={index}
+          isActive={isActive}
+          onLearnMore={onLearnMore}
+        />
       </div>
     </li>
   );
 }
 
 export function ExperienceTimeline({ items }: ExperienceTimelineProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+  const rows = chunkItems(items, ITEMS_PER_ROW);
+  const selectedItem = items.find((item) => item.slug === selectedSlug) ?? null;
+  const selectedDateLabel = selectedItem
+    ? parseTimelineDates(selectedItem.period)
+    : "";
 
-  const handleToggle = (index: number) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
-  };
+  const openModal = useCallback((slug: string) => {
+    setSelectedSlug(slug);
+    window.history.replaceState(null, "", `#experience-${slug}`);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setSelectedSlug(null);
+    if (window.location.hash.startsWith("#experience-")) {
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+  }, []);
+
+  useEffect(() => {
+    const openFromHash = () => {
+      const hash = window.location.hash;
+
+      if (!hash.startsWith("#experience-")) {
+        setSelectedSlug(null);
+        return;
+      }
+
+      const slug = hash.slice("#experience-".length);
+      const item = items.find((entry) => entry.slug === slug);
+
+      if (item) {
+        setSelectedSlug(slug);
+      }
+    };
+
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+
+    return () => {
+      window.removeEventListener("hashchange", openFromHash);
+    };
+  }, [items]);
 
   return (
-    <div className="-mx-6 overflow-x-auto px-6 pb-2 md:mx-0 md:overflow-visible md:px-0 md:pb-0">
-      <ol className="flex snap-x snap-mandatory gap-4 md:grid md:grid-cols-3 md:gap-6 md:snap-none">
-        {items.map((item, index) => (
-          <TimelineColumn
-            key={`${item.organization}-${item.title}`}
-            item={item}
-            index={index}
-            isFirst={index === 0}
-            isLast={index === items.length - 1}
-            isOpen={openIndex === index}
-            onToggle={() => handleToggle(index)}
-          />
+    <>
+      <div className="space-y-10">
+        {rows.map((row, rowIndex) => (
+          <ol
+            key={row.map((item) => item.slug).join("-")}
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3"
+          >
+            {row.map((item, columnIndex) => {
+              const globalIndex = rowIndex * ITEMS_PER_ROW + columnIndex;
+
+              return (
+                <TimelineColumn
+                  key={item.slug}
+                  item={item}
+                  index={globalIndex}
+                  isFirst={columnIndex === 0}
+                  isLast={columnIndex === row.length - 1}
+                  isActive={selectedSlug === item.slug}
+                  onLearnMore={() => openModal(item.slug)}
+                />
+              );
+            })}
+          </ol>
         ))}
-      </ol>
-    </div>
+      </div>
+
+      <ExperienceDetailModal
+        item={selectedItem}
+        dateLabel={selectedDateLabel}
+        onClose={closeModal}
+      />
+    </>
   );
 }
