@@ -88,10 +88,10 @@ export const skillGroups: SkillGroup[] = [
   {
     category: "Languages",
     items: [
-      { name: "JavaScript", slug: "javascript", tier: 4 },
+      { name: "JavaScript", slug: "javascript", tier: 3 },
       { name: "TypeScript", slug: "typescript", tier: 3 },
       { name: "Java", slug: "openjdk", tier: 2 },
-      { name: "C++", slug: "cplusplus", tier: 1 },
+      { name: "C++", slug: "cplusplus", tier: 2 },
     ],
   },
   {
@@ -106,10 +106,10 @@ export const skillGroups: SkillGroup[] = [
   {
     category: "Backend & APIs",
     items: [
-      { name: "Flask", slug: "flask", tier: 2 },
-      { name: "FastAPI", slug: "fastapi", tier: 2 },
-      { name: "REST APIs", tier: 3 },
-      { name: "WebSockets", tier: 2 },
+      { name: "Flask", slug: "flask", tier: 1 },
+      { name: "FastAPI", slug: "fastapi", tier: 1 },
+      { name: "REST APIs", tier: 1 },
+      { name: "WebSockets", tier: 1 },
       { name: "OAuth 2.0", tier: 1 },
     ],
   },
