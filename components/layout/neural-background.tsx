@@ -11,10 +11,9 @@ type Node = {
 
 const LINK_DISTANCE = 120;
 const NODE_RADIUS = 2.5;
+const NODE_PADDING = 12;
 const MIN_SPEED = 0.3;
 const MAX_SPEED = 0.45;
-const PAN_SPEED_X = 0.018;
-const PAN_SPEED_Y = 0.012;
 
 function randomSpeed() {
   const magnitude = MIN_SPEED + Math.random() * (MAX_SPEED - MIN_SPEED);
@@ -45,9 +44,12 @@ function getThemeColors(isDark: boolean) {
 }
 
 function seedNodes(width: number, height: number, count: number): Node[] {
+  const innerWidth = Math.max(width - NODE_PADDING * 2, 1);
+  const innerHeight = Math.max(height - NODE_PADDING * 2, 1);
+
   return Array.from({ length: count }, () => ({
-    x: Math.random() * width,
-    y: Math.random() * height,
+    x: NODE_PADDING + Math.random() * innerWidth,
+    y: NODE_PADDING + Math.random() * innerHeight,
     ...randomSpeed(),
   }));
 }
@@ -57,7 +59,6 @@ export function NeuralBackground() {
   const nodesRef = useRef<Node[]>([]);
   const frameRef = useRef<number | null>(null);
   const reducedMotionRef = useRef(false);
-  const panRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -75,7 +76,6 @@ export function NeuralBackground() {
       const isDark = document.documentElement.classList.contains("dark");
       const colors = getThemeColors(isDark);
       const nodes = nodesRef.current;
-      const { x: panX, y: panY } = panRef.current;
 
       ctx.clearRect(0, 0, width, height);
 
@@ -83,10 +83,10 @@ export function NeuralBackground() {
         for (let j = i + 1; j < nodes.length; j += 1) {
           const a = nodes[i];
           const b = nodes[j];
-          const ax = a.x + panX;
-          const ay = a.y + panY;
-          const bx = b.x + panX;
-          const by = b.y + panY;
+          const ax = a.x;
+          const ay = a.y;
+          const bx = b.x;
+          const by = b.y;
           const dx = ax - bx;
           const dy = ay - by;
           const distance = Math.hypot(dx, dy);
@@ -106,7 +106,7 @@ export function NeuralBackground() {
       ctx.fillStyle = colors.node;
       for (const node of nodes) {
         ctx.beginPath();
-        ctx.arc(node.x + panX, node.y + panY, NODE_RADIUS, 0, Math.PI * 2);
+        ctx.arc(node.x, node.y, NODE_RADIUS, 0, Math.PI * 2);
         ctx.fill();
       }
     };
@@ -117,19 +117,21 @@ export function NeuralBackground() {
       const nodes = nodesRef.current;
 
       if (!reducedMotionRef.current) {
+        const minX = NODE_PADDING;
+        const minY = NODE_PADDING;
+        const maxX = Math.max(width - NODE_PADDING, minX);
+        const maxY = Math.max(height - NODE_PADDING, minY);
+
         for (const node of nodes) {
           node.x += node.vx;
           node.y += node.vy;
 
-          if (node.x <= 0 || node.x >= width) node.vx *= -1;
-          if (node.y <= 0 || node.y >= height) node.vy *= -1;
+          if (node.x <= minX || node.x >= maxX) node.vx *= -1;
+          if (node.y <= minY || node.y >= maxY) node.vy *= -1;
 
-          node.x = Math.max(0, Math.min(width, node.x));
-          node.y = Math.max(0, Math.min(height, node.y));
+          node.x = Math.max(minX, Math.min(maxX, node.x));
+          node.y = Math.max(minY, Math.min(maxY, node.y));
         }
-
-        panRef.current.x = (panRef.current.x + PAN_SPEED_X) % width;
-        panRef.current.y = (panRef.current.y + PAN_SPEED_Y) % height;
       }
 
       drawFrame(context, canvas);
@@ -173,8 +175,19 @@ export function NeuralBackground() {
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       const count = getNodeCount(width);
-      nodesRef.current = seedNodes(width, height, count);
-      panRef.current = { x: 0, y: 0 };
+      const minX = NODE_PADDING;
+      const minY = NODE_PADDING;
+      const maxX = Math.max(width - NODE_PADDING, minX);
+      const maxY = Math.max(height - NODE_PADDING, minY);
+
+      if (nodesRef.current.length === count) {
+        for (const node of nodesRef.current) {
+          node.x = Math.max(minX, Math.min(maxX, node.x));
+          node.y = Math.max(minY, Math.min(maxY, node.y));
+        }
+      } else {
+        nodesRef.current = seedNodes(width, height, count);
+      }
 
       if (reducedMotionRef.current) {
         redraw();
