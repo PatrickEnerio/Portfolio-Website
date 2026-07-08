@@ -9,7 +9,7 @@ export const siteConfig = {
   title: "John Patrick Enerio | Software Engineering Student",
   description:
     "Software engineering student at UT Dallas building full-stack applications, AI-powered tools, and reliable platform software. Explore my projects, experience, and what I'm working on.",
-  url: "https://portfolio-website-patrickenerio.vercel.app",
+  url: "https://portfolio-website-patrickenerios-projects.vercel.app",
   email: "penerio2004@gmail.com",
   phone: "(214) 326-7178",
   location: "McKinney, TX",
