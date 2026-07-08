@@ -23,6 +23,17 @@ export const siteConfig = {
   contact: {
     title: "Let's work together",
     description: "Open to software engineering internships and collaborative projects.",
+    card: {
+      role: "Software Engineering Student",
+      subtitle: "UT Dallas · May 2027",
+      resumeLabel: "Download resume",
+    },
+    form: {
+      title: "Send a message",
+      description:
+        "Have a project in mind or want to connect? Drop me a note and I'll get back to you.",
+      submitLabel: "Send message",
+    },
     social: [
       {
         platform: "github",

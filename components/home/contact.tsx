@@ -1,12 +1,10 @@
-import { FileDown, Mail } from "lucide-react";
-import { SocialLinks } from "@/components/home/social-links";
+import { BusinessCard } from "@/components/home/business-card";
+import { ContactFormCard } from "@/components/home/contact-form-card";
+import { BentoCell, BentoGrid } from "@/components/layout/bento-grid";
 import { Section } from "@/components/layout/section";
 import { siteConfig } from "@/data/site";
-import { ctaPrimaryClassName, ctaSecondaryClassName } from "@/lib/cta-styles";
 
 export function Contact() {
-  const phoneHref = `tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`;
-
   return (
     <Section
       id="contact"
@@ -15,35 +13,15 @@ export function Contact() {
       title={siteConfig.contact.title}
       description={siteConfig.contact.description}
     >
-      <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
-        <div>
-          <div className="flex flex-wrap gap-3">
-            <a href={`mailto:${siteConfig.email}`} className={ctaPrimaryClassName}>
-              <Mail className="h-4 w-4" />
-              {siteConfig.email}
-            </a>
-            <a href={siteConfig.links.resume} className={ctaSecondaryClassName}>
-              <FileDown className="h-4 w-4" />
-              Resume
-            </a>
-          </div>
+      <BentoGrid>
+        <BentoCell colSpan={5}>
+          <BusinessCard className="h-full" />
+        </BentoCell>
 
-          <SocialLinks className="mt-6" />
-
-          <p className="mt-6 text-sm text-zinc-500 dark:text-zinc-500">
-            {siteConfig.location}
-            <span aria-hidden="true"> · </span>
-            <a
-              href={phoneHref}
-              className="transition-colors hover:text-zinc-700 dark:hover:text-zinc-300"
-            >
-              {siteConfig.phone}
-            </a>
-          </p>
-        </div>
-
-        <div aria-hidden="true" className="hidden lg:block" />
-      </div>
+        <BentoCell colSpan={7}>
+          <ContactFormCard className="h-full" />
+        </BentoCell>
+      </BentoGrid>
     </Section>
   );
 }

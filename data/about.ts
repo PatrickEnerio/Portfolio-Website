@@ -19,7 +19,7 @@ export const about = {
     {
       id: "what-i-do-now",
       title: "What I do now",
-      body: "Building RF platform automation at Nokia and shipping user-facing products — from an ACM voice cooking assistant to a UTDesign EPICS hardware project.",
+      body: "Currently a RF intern at Nokia and trying to complete my Bachelor's degree at UTD.",
     },
     {
       id: "what-im-looking-for",
